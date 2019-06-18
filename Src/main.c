@@ -16,8 +16,8 @@ void VID_PreConfig (void)
 {
     screen_t screen;
     screen.buf = NULL;
-    screen.width = 640;
-    screen.height = 480;
+    screen.width = -1;
+    screen.height = -1;
     screen_win_cfg(NULL, &screen, GFX_COLOR_MODE, 1);
 }
 

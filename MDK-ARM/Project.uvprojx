@@ -81,7 +81,7 @@
           </BeforeMake>
           <AfterMake>
             <RunUserProg1>1</RunUserProg1>
-            <RunUserProg2>0</RunUserProg2>
+            <RunUserProg2>1</RunUserProg2>
             <UserProg1Name>E:..\common\pc\win\postbuild.bat E:\Keil_v5\ARM</UserProg1Name>
             <UserProg2Name></UserProg2Name>
             <UserProg1Dos16Mode>0</UserProg1Dos16Mode>
@@ -796,11 +796,6 @@
               <FilePath>..\common\music_main.c</FilePath>
             </File>
             <File>
-              <FileName>sd_diskio.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\common\sd_diskio.c</FilePath>
-            </File>
-            <File>
               <FileName>dev_main.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\common\dev_main.c</FilePath>
@@ -814,6 +809,11 @@
               <FileName>serial.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\common\serial.c</FilePath>
+            </File>
+            <File>
+              <FileName>sd_diskio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\sd_diskio.c</FilePath>
             </File>
             <File>
               <FileName>dev_io.c</FileName>
@@ -889,6 +889,16 @@
               <FileName>bgui.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\common\boot\bgui.c</FilePath>
+            </File>
+            <File>
+              <FileName>bwin.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\boot\bwin.c</FilePath>
+            </File>
+            <File>
+              <FileName>baudio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\boot\baudio.c</FilePath>
             </File>
           </Files>
         </Group>
