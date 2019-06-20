@@ -875,6 +875,16 @@
               <FileType>1</FileType>
               <FilePath>..\common\jpeg_hal.c</FilePath>
             </File>
+            <File>
+              <FileName>bhal.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\boot\bhal.c</FilePath>
+            </File>
+            <File>
+              <FileName>dev_cmd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\dev_cmd.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
