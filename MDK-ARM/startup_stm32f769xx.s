@@ -50,6 +50,13 @@ Stack_Mem       SPACE   Stack_Size
 __initial_sp
 
 
+Shared_Size     EQU   0x1000
+
+                AREA    SHARED, READWRITE, ALIGN=3
+__shared_base
+Shared_Mem      SPACE   Shared_Size
+__shared_limit
+
 ; <h> Heap Configuration
 ;   <o>  Heap Size (in Bytes) <0x0-0xFFFFFFFF:8>
 ; </h>
@@ -610,6 +617,8 @@ MDIOS_IRQHandler
                  EXPORT  Stack_Size
                  EXPORT  Heap_Mem
                  EXPORT  Heap_Size
+                 EXPORT  Shared_Mem
+                 EXPORT  Shared_Size
                  
 __user_initial_stackheap
 
