@@ -886,9 +886,9 @@
               <FilePath>..\common\dev_cmd.c</FilePath>
             </File>
             <File>
-              <FileName>bsp_api.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\boot\inc\bsp_api.h</FilePath>
+              <FileName>bsp_api.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\bsp_api.c</FilePath>
             </File>
           </Files>
         </Group>

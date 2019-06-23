@@ -43,7 +43,7 @@
 ;   <o> Stack Size (in Bytes) <0x0-0xFFFFFFFF:8>
 ; </h>
 
-Stack_Size		EQU     0x4000
+Stack_Size		EQU     0x8000
 
                 AREA    STACK, NOINIT, READWRITE, ALIGN=3
 Stack_Mem       SPACE   Stack_Size
@@ -61,12 +61,22 @@ __shared_limit
 ;   <o>  Heap Size (in Bytes) <0x0-0xFFFFFFFF:8>
 ; </h>
 
-Heap_Size      EQU     0x1000000
+Heap_Size       EQU     0x2000
 
                 AREA    HEAP, NOINIT, READWRITE, ALIGN=3
 __heap_base
 Heap_Mem        SPACE   Heap_Size
 __heap_limit
+
+
+
+UserHeap_Size   EQU     0x01000000
+
+                AREA    USERHEAP, NOINIT, READWRITE, ALIGN=3
+__user_heap_base
+UserHeap_Mem    SPACE   UserHeap_Size
+__user_heap_limit 
+
 
                 PRESERVE8
                 THUMB
@@ -619,7 +629,18 @@ MDIOS_IRQHandler
                  EXPORT  Heap_Size
                  EXPORT  Shared_Mem
                  EXPORT  Shared_Size
-                 
+                 EXPORT __arch_user_heap
+
+__arch_user_heap PROC
+                 PUSH {R2}
+                 LDR R2, =UserHeap_Mem
+                 STR R2, [R0]
+                 LDR R2, =UserHeap_Size
+                 STR R2, [R1]
+                 POP {R2}
+                 BX  LR
+                 ENDP
+
 __user_initial_stackheap
 
                  LDR     R0, = __heap_base

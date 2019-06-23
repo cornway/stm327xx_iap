@@ -12,13 +12,18 @@ int main(void)
     dev_main();
 }
 
+static void *__vid_alloc (uint32_t size)
+{
+    return Sys_AllocVideo((int *)&size);
+}
+
 void VID_PreConfig (void)
 {
     screen_t screen;
     screen.buf = NULL;
     screen.width = -1;
     screen.height = -1;
-    screen_win_cfg(NULL, &screen, GFX_COLOR_MODE, 1);
+    screen_win_cfg(__vid_alloc, NULL, &screen, GFX_COLOR_MODE_RGBA8888, 1);
 }
 
 int mainloop (int argc, const char *argv[])
