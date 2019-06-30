@@ -1,5 +1,7 @@
 /* Includes ------------------------------------------------------------------*/
-#include "main.h"
+#if !defined MODULE
+
+#include <main.h>
 #include <lcd_main.h>
 #include <heap.h>
 
@@ -33,3 +35,4 @@ int mainloop (int argc, const char *argv[])
     return 0;
 }
 
+#endif

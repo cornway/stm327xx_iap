@@ -43,12 +43,21 @@
 ;   <o> Stack Size (in Bytes) <0x0-0xFFFFFFFF:8>
 ; </h>
 
-Stack_Size		EQU     0x8000
+                IF      :DEF:MODULE
+Heap_Size       EQU     0x1000
+                ELSE    ;MODULE
+Heap_Size       EQU     0x2000
+                ENDIF   ;MODULE
+Stack_Size		EQU     0x2000
 
                 AREA    STACK, NOINIT, READWRITE, ALIGN=3
 Stack_Mem       SPACE   Stack_Size
 __initial_sp
 
+                AREA    HEAP, NOINIT, READWRITE, ALIGN=3
+__heap_base
+Heap_Mem        SPACE   Heap_Size
+__heap_limit
 
 Shared_Size     EQU   0x1000
 
@@ -57,25 +66,17 @@ __shared_base
 Shared_Mem      SPACE   Shared_Size
 __shared_limit
 
-; <h> Heap Configuration
-;   <o>  Heap Size (in Bytes) <0x0-0xFFFFFFFF:8>
-; </h>
-
-Heap_Size       EQU     0x2000
-
-                AREA    HEAP, NOINIT, READWRITE, ALIGN=3
-__heap_base
-Heap_Mem        SPACE   Heap_Size
-__heap_limit
-
-
-
+                IF      :DEF:BOOT
 UserHeap_Size   EQU     0x01000000
 
                 AREA    USERHEAP, NOINIT, READWRITE, ALIGN=3
 __user_heap_base
 UserHeap_Mem    SPACE   UserHeap_Size
-__user_heap_limit 
+__user_heap_limit
+                ELSE
+UserHeap_Size   EQU     0x0
+UserHeap_Mem    EQU     0x0
+                ENDIF
 
 
                 PRESERVE8
@@ -630,6 +631,8 @@ MDIOS_IRQHandler
                  EXPORT  Shared_Mem
                  EXPORT  Shared_Size
                  EXPORT __arch_user_heap
+                 EXPORT __arch_vtor_size
+                 EXPORT __arch_entry_ptr
 
 __arch_user_heap PROC
                  PUSH {R2}
@@ -637,6 +640,22 @@ __arch_user_heap PROC
                  STR R2, [R0]
                  LDR R2, =UserHeap_Size
                  STR R2, [R1]
+                 POP {R2}
+                 BX  LR
+                 ENDP 
+
+__arch_vtor_size PROC
+                 PUSH {R2}
+                 LDR R2, =__Vectors_Size
+                 STR R2, [R0]
+                 POP {R2}
+                 BX  LR
+                 ENDP
+
+__arch_entry_ptr PROC
+                 PUSH {R2}
+                 LDR R2, =Reset_Handler
+                 STR R2, [R0]
                  POP {R2}
                  BX  LR
                  ENDP
