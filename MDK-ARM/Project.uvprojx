@@ -930,6 +930,11 @@
               <FileType>1</FileType>
               <FilePath>..\common\boot\baudio.c</FilePath>
             </File>
+            <File>
+              <FileName>boot_cmd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\boot\boot_cmd.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2718,6 +2723,11 @@
               <FileType>1</FileType>
               <FilePath>..\common\boot\baudio.c</FilePath>
             </File>
+            <File>
+              <FileName>boot_cmd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\boot\boot_cmd.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -4437,6 +4447,11 @@
               <FileName>baudio.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\common\boot\baudio.c</FilePath>
+            </File>
+            <File>
+              <FileName>boot_cmd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\boot\boot_cmd.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -48,7 +48,8 @@ Heap_Size       EQU     0x1000
                 ELSE    ;MODULE
 Heap_Size       EQU     0x2000
                 ENDIF   ;MODULE
-Stack_Size		EQU     0x2000
+
+Stack_Size		EQU     0x7000
 
                 AREA    STACK, NOINIT, READWRITE, ALIGN=3
 Stack_Mem       SPACE   Stack_Size
@@ -59,7 +60,7 @@ __heap_base
 Heap_Mem        SPACE   Heap_Size
 __heap_limit
 
-Shared_Size     EQU   0x1000
+Shared_Size     EQU     0x1000
 
                 AREA    SHARED, READWRITE, ALIGN=3
 __shared_base

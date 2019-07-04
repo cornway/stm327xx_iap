@@ -4,6 +4,7 @@
 #include <main.h>
 #include <lcd_main.h>
 #include <heap.h>
+#include <audio_main.h>
 
 const char *snd_dir_path = "/sys/sound";
 
@@ -31,6 +32,8 @@ void VID_PreConfig (void)
 
 int mainloop (int argc, const char *argv[])
 {
+    audio_conf("samplerate=22050, volume=64");
+    vid_print_info();
     boot_main(argc, argv);
     return 0;
 }
