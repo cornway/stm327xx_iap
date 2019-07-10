@@ -6,4 +6,5 @@
 !/MDK-ARM/Project.uvprojx
 !/MDK-ARM/startup_stm32f769xx.s
 /common
+/bbox
 /.repo
