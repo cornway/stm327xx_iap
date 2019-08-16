@@ -914,11 +914,6 @@
               <FilePath>..\common\tim.c</FilePath>
             </File>
             <File>
-              <FileName>bhal.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\common\boot\bhal.c</FilePath>
-            </File>
-            <File>
               <FileName>dev_cmd.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\common\dev_cmd.c</FilePath>
@@ -983,11 +978,41 @@
               <FileType>1</FileType>
               <FilePath>..\common\lib\dstring.c</FilePath>
             </File>
+            <File>
+              <FileName>lcd_hal.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\lcd_hal.c</FilePath>
+            </File>
+            <File>
+              <FileName>lcd_int.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\int\lcd_int.h</FilePath>
+            </File>
+            <File>
+              <FileName>jpeg.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\inc\jpeg.h</FilePath>
+            </File>
+            <File>
+              <FileName>jpeg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\jpeg.c</FilePath>
+            </File>
+            <File>
+              <FileName>jpeg_hal.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\jpeg_hal.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>boot</GroupName>
           <Files>
+            <File>
+              <FileName>bhal.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\boot\bhal.c</FilePath>
+            </File>
             <File>
               <FileName>bmain.c</FileName>
               <FileType>1</FileType>
@@ -1125,6 +1150,11 @@
               <FileName>bspif.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\common\bsp\bspif.c</FilePath>
+            </File>
+            <File>
+              <FileName>jpeg_utils.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\Utilities\JPEG\jpeg_utils.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2609,11 +2639,6 @@
               <FilePath>..\common\tim.c</FilePath>
             </File>
             <File>
-              <FileName>bhal.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\common\boot\bhal.c</FilePath>
-            </File>
-            <File>
               <FileName>dev_cmd.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\common\dev_cmd.c</FilePath>
@@ -2677,6 +2702,31 @@
               <FileName>dstring.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\common\lib\dstring.c</FilePath>
+            </File>
+            <File>
+              <FileName>lcd_hal.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\lcd_hal.c</FilePath>
+            </File>
+            <File>
+              <FileName>lcd_int.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\int\lcd_int.h</FilePath>
+            </File>
+            <File>
+              <FileName>jpeg.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\inc\jpeg.h</FilePath>
+            </File>
+            <File>
+              <FileName>jpeg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\jpeg.c</FilePath>
+            </File>
+            <File>
+              <FileName>jpeg_hal.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\jpeg_hal.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2751,6 +2801,11 @@
             </GroupArmAds>
           </GroupOption>
           <Files>
+            <File>
+              <FileName>bhal.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\boot\bhal.c</FilePath>
+            </File>
             <File>
               <FileName>bmain.c</FileName>
               <FileType>1</FileType>
@@ -2870,6 +2925,11 @@
               <FileName>bspif.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\common\bsp\bspif.c</FilePath>
+            </File>
+            <File>
+              <FileName>jpeg_utils.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\Utilities\JPEG\jpeg_utils.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -4354,11 +4414,6 @@
               <FilePath>..\common\tim.c</FilePath>
             </File>
             <File>
-              <FileName>bhal.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\common\boot\bhal.c</FilePath>
-            </File>
-            <File>
               <FileName>dev_cmd.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\common\dev_cmd.c</FilePath>
@@ -4422,6 +4477,31 @@
               <FileName>dstring.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\common\lib\dstring.c</FilePath>
+            </File>
+            <File>
+              <FileName>lcd_hal.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\lcd_hal.c</FilePath>
+            </File>
+            <File>
+              <FileName>lcd_int.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\int\lcd_int.h</FilePath>
+            </File>
+            <File>
+              <FileName>jpeg.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\inc\jpeg.h</FilePath>
+            </File>
+            <File>
+              <FileName>jpeg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\jpeg.c</FilePath>
+            </File>
+            <File>
+              <FileName>jpeg_hal.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\jpeg_hal.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -4496,6 +4576,11 @@
             </GroupArmAds>
           </GroupOption>
           <Files>
+            <File>
+              <FileName>bhal.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\boot\bhal.c</FilePath>
+            </File>
             <File>
               <FileName>bmain.c</FileName>
               <FileType>1</FileType>
@@ -4615,6 +4700,11 @@
               <FileName>bspif.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\common\bsp\bspif.c</FilePath>
+            </File>
+            <File>
+              <FileName>jpeg_utils.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\Utilities\JPEG\jpeg_utils.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -6017,11 +6107,6 @@
               <FilePath>..\common\tim.c</FilePath>
             </File>
             <File>
-              <FileName>bhal.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\common\boot\bhal.c</FilePath>
-            </File>
-            <File>
               <FileName>dev_cmd.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\common\dev_cmd.c</FilePath>
@@ -6085,6 +6170,31 @@
               <FileName>dstring.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\common\lib\dstring.c</FilePath>
+            </File>
+            <File>
+              <FileName>lcd_hal.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\lcd_hal.c</FilePath>
+            </File>
+            <File>
+              <FileName>lcd_int.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\int\lcd_int.h</FilePath>
+            </File>
+            <File>
+              <FileName>jpeg.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\inc\jpeg.h</FilePath>
+            </File>
+            <File>
+              <FileName>jpeg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\jpeg.c</FilePath>
+            </File>
+            <File>
+              <FileName>jpeg_hal.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\jpeg_hal.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -6159,6 +6269,11 @@
             </GroupArmAds>
           </GroupOption>
           <Files>
+            <File>
+              <FileName>bhal.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\boot\bhal.c</FilePath>
+            </File>
             <File>
               <FileName>bmain.c</FileName>
               <FileType>1</FileType>
@@ -6432,6 +6547,11 @@
               <FileName>bspif.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\common\bsp\bspif.c</FilePath>
+            </File>
+            <File>
+              <FileName>jpeg_utils.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\Utilities\JPEG\jpeg_utils.c</FilePath>
             </File>
           </Files>
         </Group>

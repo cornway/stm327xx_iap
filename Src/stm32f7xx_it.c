@@ -166,38 +166,10 @@ void SysTick_Handler(void)
 /*  file (startup_stm32f7xx.s).                                               */
 /******************************************************************************/
 
-#if 0
-void JPEG_IRQHandler(void)
-{
-//  HAL_JPEG_IRQHandler(&JPEG_Handle);
-}
-
-void DMA2_Stream3_IRQHandler(void)
-{
-//  HAL_DMA_IRQHandler(JPEG_Handle.hdmain);
-}
-
-void DMA2_Stream4_IRQHandler(void)
-{
-//  HAL_DMA_IRQHandler(JPEG_Handle.hdmaout);
-}
-#endif
-
 
 void AUDIO_OUT_SAIx_DMAx_IRQHandler(void)
 {
   HAL_DMA_IRQHandler(haudio_out_sai.hdmatx);
-}
-
-void AUDIO_DFSDMx_DMAx_TOP_LEFT_IRQHandler(void)
-{
-  HAL_DMA_IRQHandler(hAudioInTopLeftFilter.hdmaReg);
-}
-
-
-void AUDIO_DFSDMx_DMAx_TOP_RIGHT_IRQHandler(void)
-{
-  HAL_DMA_IRQHandler(hAudioInTopRightFilter.hdmaReg);
 }
 
 extern HCD_HandleTypeDef hhcd;
@@ -209,11 +181,6 @@ void OTG_HS_IRQHandler(void)
 #endif
 {
   HAL_HCD_IRQHandler(&hhcd);
-}
-
-void DMA2D_IRQHandler(void)
-{
-  //HAL_DMA2D_IRQHandler(&dma2d_hdl);
 }
 
 extern SD_HandleTypeDef uSdHandle;

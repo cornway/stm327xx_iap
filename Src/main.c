@@ -23,11 +23,17 @@ static void *__vid_alloc (uint32_t size)
 
 void VID_PreConfig (void)
 {
-    screen_t screen;
-    screen.buf = NULL;
-    screen.width = -1;
-    screen.height = -1;
-    vid_config(__vid_alloc, NULL, &screen, GFX_COLOR_MODE_RGBA8888, 1);
+    screen_conf_t conf;
+
+    conf.res_x = -1;
+    conf.res_y = -1;
+    conf.alloc.malloc = heap_alloc_shared;
+    conf.alloc.free = heap_free;
+    conf.colormode = GFX_COLOR_MODE_RGBA8888;
+    conf.laynum = 1;
+    conf.hwaccel = 0;
+    conf.clockpresc = 2;
+    vid_config(&conf);
 }
 
 int mainloop (int argc, const char *argv[])

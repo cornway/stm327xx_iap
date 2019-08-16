@@ -15,7 +15,7 @@
 #define MUSIC_MODULE_PRESENT        (1)
 
 #define DEVIO_READONLY              (0)
-#define MAX_HANDLES                 (4)
+#define MAX_HANDLES                 (6)
 
 #endif /*BSP_DRIVER*/
 
