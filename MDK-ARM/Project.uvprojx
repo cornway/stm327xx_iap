@@ -1019,16 +1019,6 @@
               <FilePath>..\common\boot\bmain.c</FilePath>
             </File>
             <File>
-              <FileName>bgui.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\common\boot\bgui.c</FilePath>
-            </File>
-            <File>
-              <FileName>bwin.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\common\boot\bwin.c</FilePath>
-            </File>
-            <File>
               <FileName>baudio.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\common\boot\baudio.c</FilePath>
@@ -1037,6 +1027,21 @@
               <FileName>boot_cmd.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\common\boot\boot_cmd.c</FilePath>
+            </File>
+            <File>
+              <FileName>binput.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\boot\binput.c</FilePath>
+            </File>
+            <File>
+              <FileName>bres_loader.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\boot\bres_loader.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsfx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\boot\bsfx.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1165,6 +1170,41 @@
               <FileName>Project.lib</FileName>
               <FileType>4</FileType>
               <FilePath>.\stm32f769-hal-lib\Project.lib</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>gui</GroupName>
+          <Files>
+            <File>
+              <FileName>colors.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\gui\colors.h</FilePath>
+            </File>
+            <File>
+              <FileName>gui_math.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\gui\gui_math.c</FilePath>
+            </File>
+            <File>
+              <FileName>binput.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\boot\binput.c</FilePath>
+            </File>
+            <File>
+              <FileName>gui_hal.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\gui\gui_hal.c</FilePath>
+            </File>
+            <File>
+              <FileName>gui_win.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\gui\gui_win.c</FilePath>
+            </File>
+            <File>
+              <FileName>gui_main.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\gui\gui_main.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2862,16 +2902,6 @@
               </FileOption>
             </File>
             <File>
-              <FileName>bgui.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\common\boot\bgui.c</FilePath>
-            </File>
-            <File>
-              <FileName>bwin.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\common\boot\bwin.c</FilePath>
-            </File>
-            <File>
               <FileName>baudio.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\common\boot\baudio.c</FilePath>
@@ -2880,6 +2910,21 @@
               <FileName>boot_cmd.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\common\boot\boot_cmd.c</FilePath>
+            </File>
+            <File>
+              <FileName>binput.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\boot\binput.c</FilePath>
+            </File>
+            <File>
+              <FileName>bres_loader.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\boot\bres_loader.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsfx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\boot\bsfx.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2940,6 +2985,41 @@
               <FileName>Project.lib</FileName>
               <FileType>4</FileType>
               <FilePath>.\stm32f769-hal-lib\Project.lib</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>gui</GroupName>
+          <Files>
+            <File>
+              <FileName>colors.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\gui\colors.h</FilePath>
+            </File>
+            <File>
+              <FileName>gui_math.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\gui\gui_math.c</FilePath>
+            </File>
+            <File>
+              <FileName>binput.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\boot\binput.c</FilePath>
+            </File>
+            <File>
+              <FileName>gui_hal.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\gui\gui_hal.c</FilePath>
+            </File>
+            <File>
+              <FileName>gui_win.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\gui\gui_win.c</FilePath>
+            </File>
+            <File>
+              <FileName>gui_main.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\gui\gui_main.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -4637,16 +4717,6 @@
               </FileOption>
             </File>
             <File>
-              <FileName>bgui.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\common\boot\bgui.c</FilePath>
-            </File>
-            <File>
-              <FileName>bwin.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\common\boot\bwin.c</FilePath>
-            </File>
-            <File>
               <FileName>baudio.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\common\boot\baudio.c</FilePath>
@@ -4655,6 +4725,21 @@
               <FileName>boot_cmd.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\common\boot\boot_cmd.c</FilePath>
+            </File>
+            <File>
+              <FileName>binput.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\boot\binput.c</FilePath>
+            </File>
+            <File>
+              <FileName>bres_loader.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\boot\bres_loader.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsfx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\boot\bsfx.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -4715,6 +4800,41 @@
               <FileName>Project.lib</FileName>
               <FileType>4</FileType>
               <FilePath>.\stm32f769-hal-lib\Project.lib</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>gui</GroupName>
+          <Files>
+            <File>
+              <FileName>colors.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\gui\colors.h</FilePath>
+            </File>
+            <File>
+              <FileName>gui_math.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\gui\gui_math.c</FilePath>
+            </File>
+            <File>
+              <FileName>binput.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\boot\binput.c</FilePath>
+            </File>
+            <File>
+              <FileName>gui_hal.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\gui\gui_hal.c</FilePath>
+            </File>
+            <File>
+              <FileName>gui_win.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\gui\gui_win.c</FilePath>
+            </File>
+            <File>
+              <FileName>gui_main.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\gui\gui_main.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -6280,16 +6400,6 @@
               <FilePath>..\common\boot\bmain.c</FilePath>
             </File>
             <File>
-              <FileName>bgui.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\common\boot\bgui.c</FilePath>
-            </File>
-            <File>
-              <FileName>bwin.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\common\boot\bwin.c</FilePath>
-            </File>
-            <File>
               <FileName>baudio.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\common\boot\baudio.c</FilePath>
@@ -6298,6 +6408,21 @@
               <FileName>boot_cmd.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\common\boot\boot_cmd.c</FilePath>
+            </File>
+            <File>
+              <FileName>binput.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\boot\binput.c</FilePath>
+            </File>
+            <File>
+              <FileName>bres_loader.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\boot\bres_loader.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsfx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\boot\bsfx.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -6562,6 +6687,41 @@
               <FileName>Project.lib</FileName>
               <FileType>4</FileType>
               <FilePath>.\stm32f769-hal-lib\Project.lib</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>gui</GroupName>
+          <Files>
+            <File>
+              <FileName>colors.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\gui\colors.h</FilePath>
+            </File>
+            <File>
+              <FileName>gui_math.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\gui\gui_math.c</FilePath>
+            </File>
+            <File>
+              <FileName>binput.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\boot\binput.c</FilePath>
+            </File>
+            <File>
+              <FileName>gui_hal.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\gui\gui_hal.c</FilePath>
+            </File>
+            <File>
+              <FileName>gui_win.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\gui\gui_win.c</FilePath>
+            </File>
+            <File>
+              <FileName>gui_main.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\gui\gui_main.c</FilePath>
             </File>
           </Files>
         </Group>

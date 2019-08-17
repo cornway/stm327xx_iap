@@ -5,6 +5,7 @@
 #include <lcd_main.h>
 #include <heap.h>
 #include <audio_main.h>
+#include <gui.h>
 
 const char *snd_dir_path = "/sys/sound";
 
@@ -14,11 +15,6 @@ extern int dev_main (void);
 int main(void)
 {
     dev_main();
-}
-
-static void *__vid_alloc (uint32_t size)
-{
-    return heap_alloc_shared(size);
 }
 
 void VID_PreConfig (void)
@@ -34,6 +30,7 @@ void VID_PreConfig (void)
     conf.hwaccel = 0;
     conf.clockpresc = 2;
     vid_config(&conf);
+    vid_set_keying(COLOR_GREEN);
 }
 
 int mainloop (int argc, const char *argv[])
