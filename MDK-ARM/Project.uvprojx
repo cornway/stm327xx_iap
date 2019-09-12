@@ -322,8 +322,8 @@
             <Rwpi>0</Rwpi>
             <wLevel>2</wLevel>
             <uThumb>0</uThumb>
-            <uSurpInc>0</uSurpInc>
-            <uC99>1</uC99>
+            <uSurpInc>1</uSurpInc>
+            <uC99>0</uC99>
             <useXO>0</useXO>
             <v6Lang>1</v6Lang>
             <v6LangP>1</v6LangP>
@@ -333,10 +333,10 @@
             <v6WtE>0</v6WtE>
             <v6Rtti>0</v6Rtti>
             <VariousControls>
-              <MiscControls> </MiscControls>
+              <MiscControls> --cpp11 --gnu --c99</MiscControls>
               <Define>STM32F769xx,USE_HAL_DRIVER,USE_STM32F769I_DISCO,DATA_IN_ExtSDRAM,USE_LCD_HDMI,USE_USB_HS,STM32_SDK,BOOT,BSP_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\Inc;..\common\STM32F7xx_Driver\Inc;..\common\FatFs\src;..\common\STM32F7xx_Driver\BSP\Components\Common;..\common\STM32F7xx_Driver\BSP\STM32F769I-Discovery;..\common\STM32F7xx_Driver\CMSIS\Device\ST\STM32F7xx\Include;..\doom\src;..\doom\src\chocdoom;..\common\inc;..\common\boot\inc</IncludePath>
+              <IncludePath>..\common\STM32F7xx_Driver\CMSIS\Include;..\common\STM32F7xx_Driver\CMSIS\Device\ST\STM32F7xx\Include;..\common\STM32F7xx_Driver\Inc;..\common\STM32F7xx_Driver\BSP\Components\Common;..\common\STM32F7xx_Driver\BSP\STM32F769I-Discovery;..\common\FatFs\src;..\common\boot\inc;..\common\inc;..\Inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -1205,6 +1205,16 @@
               <FileName>gui_main.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\common\gui\gui_main.c</FilePath>
+            </File>
+            <File>
+              <FileName>gfx2d_mem.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\inc\gfx2d_mem.h</FilePath>
+            </File>
+            <File>
+              <FileName>gfx2d_mem.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\gfx2d_mem.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3021,6 +3031,16 @@
               <FileType>1</FileType>
               <FilePath>..\common\gui\gui_main.c</FilePath>
             </File>
+            <File>
+              <FileName>gfx2d_mem.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\inc\gfx2d_mem.h</FilePath>
+            </File>
+            <File>
+              <FileName>gfx2d_mem.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\gfx2d_mem.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -4835,6 +4855,16 @@
               <FileName>gui_main.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\common\gui\gui_main.c</FilePath>
+            </File>
+            <File>
+              <FileName>gfx2d_mem.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\inc\gfx2d_mem.h</FilePath>
+            </File>
+            <File>
+              <FileName>gfx2d_mem.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\gfx2d_mem.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -6722,6 +6752,16 @@
               <FileName>gui_main.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\common\gui\gui_main.c</FilePath>
+            </File>
+            <File>
+              <FileName>gfx2d_mem.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\inc\gfx2d_mem.h</FilePath>
+            </File>
+            <File>
+              <FileName>gfx2d_mem.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\gfx2d_mem.c</FilePath>
             </File>
           </Files>
         </Group>
