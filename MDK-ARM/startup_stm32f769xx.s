@@ -42,13 +42,7 @@
 ; <h> Stack Configuration
 ;   <o> Stack Size (in Bytes) <0x0-0xFFFFFFFF:8>
 ; </h>
-
-                IF      :DEF:MODULE
-Heap_Size       EQU     0x1000
-                ELSE    ;MODULE
-Heap_Size       EQU     0x2000
-                ENDIF   ;MODULE
-
+Heap_Size       EQU     0x4000
 Stack_Size		EQU     0x7000
 
                 AREA    STACK, NOINIT, READWRITE, ALIGN=3
@@ -67,18 +61,12 @@ __shared_base
 Shared_Mem      SPACE   Shared_Size
 __shared_limit
 
-                IF      :DEF:BOOT
 UserHeap_Size   EQU     0x01000000
 
                 AREA    USERHEAP, NOINIT, READWRITE, ALIGN=3
 __user_heap_base
 UserHeap_Mem    SPACE   UserHeap_Size
 __user_heap_limit
-                ELSE
-UserHeap_Size   EQU     0x0
-UserHeap_Mem    EQU     0x0
-                ENDIF
-
 
                 PRESERVE8
                 THUMB

@@ -10,16 +10,16 @@
 const char *snd_dir_path = "/sys/sound";
 
 extern int boot_main (int argc, const char **argv);
-extern int dev_main (void);
+extern int bsp_drv_main (void);
 
 int main(void)
 {
-    dev_main();
+    bsp_drv_main();
 }
 
 void VID_PreConfig (void)
 {
-    screen_conf_t conf;
+    screen_conf_t conf = {0};
 
     conf.res_x = -1;
     conf.res_y = -1;
@@ -28,9 +28,10 @@ void VID_PreConfig (void)
     conf.colormode = GFX_COLOR_MODE_RGBA8888;
     conf.laynum = 1;
     conf.hwaccel = 0;
+    conf.cachealgo = VID_CACHE_WBNWA;
     conf.clockpresc = 2;
     vid_config(&conf);
-    vid_set_keying(COLOR_GREEN);
+    vid_set_keying(COLOR_GREEN, 1);
 }
 
 int mainloop (int argc, const char *argv[])
