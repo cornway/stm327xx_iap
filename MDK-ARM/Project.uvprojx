@@ -1224,6 +1224,21 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>drv</GroupName>
+          <Files>
+            <File>
+              <FileName>gamepad-gp-50.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\bsp-drv\gamepad-gp-50.c</FilePath>
+            </File>
+            <File>
+              <FileName>gamepad-def.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\bsp-drv\gamepad-def.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>::CMSIS</GroupName>
         </Group>
       </Groups>
@@ -3332,6 +3347,21 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>drv</GroupName>
+          <Files>
+            <File>
+              <FileName>gamepad-gp-50.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\bsp-drv\gamepad-gp-50.c</FilePath>
+            </File>
+            <File>
+              <FileName>gamepad-def.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\bsp-drv\gamepad-def.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>::CMSIS</GroupName>
         </Group>
       </Groups>
@@ -5434,6 +5464,21 @@
               <FileName>gfx2d_mem.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\common\gfx2d_mem.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>drv</GroupName>
+          <Files>
+            <File>
+              <FileName>gamepad-gp-50.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\bsp-drv\gamepad-gp-50.c</FilePath>
+            </File>
+            <File>
+              <FileName>gamepad-def.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\bsp-drv\gamepad-def.c</FilePath>
             </File>
           </Files>
         </Group>
