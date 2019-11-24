@@ -1,0 +1,7 @@
+
+CCINC_ARMV7XX :=
+
+CCDEFS_ARMV7XX := -D__ARCH_ARM_M7__
+
+CCFLAGS_ARMV7XX :=  -mcpu=cortex-m7 -fsingle-precision-constant -Wdouble-promotion
+
