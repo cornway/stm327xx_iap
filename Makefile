@@ -1,59 +1,69 @@
-TOPDIR	:= $(shell if [ "$$PWD" != "" ]; then echo $$PWD; else pwd; fi)
+TOP	:= $(shell if [ "$$PWD" != "" ]; then echo $$PWD; else pwd; fi)
 
-CC := arm-none-eabi-gcc
-CCASM := arm-none-eabi-as
+PLATFORM := stm32f769-disco
 CCVER := __ARMGCC_VERSION=1
 
-ASFLAGS_M7 := -mcpu=cortex-m7 -mthumb
-
-CCFLAGS := -std=gnu99 -g -O0 -Wall -mlittle-endian
-CCDEFS = -D$(CCVER)
-CCINC = \
-	-I$(TOPDIR)/Inc \
-	-I$(TOPDIR)/ulib/pub \
-	-I$(TOPDIR)/ulib/arch
-
-CCINCHAL_H7 := \
-	-I$(TOPDIR)/common/STM32F7xx_Driver/CMSIS/Device/ST/STM32F7xx/Include \
-	-I$(TOPDIR)/common/STM32F7xx_Driver/CMSIS/Include \
-	-I$(TOPDIR)/common/STM32F7xx_Driver/Inc
-
-CCINCBSP_DISCO_769 := \
-	-I$(TOPDIR)/common/STM32F7xx_Driver/BSP/STM32F769I-Discovery
-
-export CCFLAGS_TOP := $(CCFLAGS)
-export CCINC_TOP := $(CCINC) \
-					$(CCINCHAL_H7) \
-					$(CCINCBSP_DISCO_769)
-export CCDEFS_TOP = $(CCDEFS)
-export CCBIN_TOP := $(CC)
-export CCASM_TOP := $(CCASM)
-export ASFLAGS_M7_TOP := $(ASFLAGS_M7)
-
-#STM32F769 related targets
-include ./configs/.stm32f769_disco
-
-f769_hal : CCDEFS += $(STM32F769_DISCO_BOOTLOADER_CDEFS)
-
-_f769_hal :
-	@$(MAKE) f769_hal TOP=$(TOPDIR) -C ./common/
-
-f769_hal : _f769_hal
 
 
-#ulib related targets
+include $(TOP)/configs/$(PLATFORM)/boot.mk
 
-ulib_stm32f769_disco : CCDEFS += $(STM32F769_DISCO_BOOTLOADER_CDEFS)
+export CCVER_TOP := $(CCVER)
 
-_ulib_stm32f769_disco :
-	mkdir -p ./ulib/.output
+all: hal ulib boot
 
-	@$(MAKE) ulib_stm32f7xx TOP=$(TOPDIR) -C ./ulib/
+#hal
 
-ulib_stm32f769_disco : _ulib_stm32f769_disco
+.PHONY: hal
+hal : _hal _bsp _com
+
+_hal :
+	@$(MAKE) hal TOP=$(TOP) PLATFORM=$(PLATFORM) -C ./common/
+
+_bsp:
+	@$(MAKE) bsp TOP=$(TOP) PLATFORM=$(PLATFORM) -C ./common/
+
+_com:
+	@$(MAKE) com TOP=$(TOP) PLATFORM=$(PLATFORM) -C ./common/
+
+#ulib
+
+.PHONY: ulib
+ulib:
+	@$(MAKE) ulib TOP=$(TOP) PLATFORM=$(PLATFORM) -C ./ulib/
+
+#main
+
+.PHONY: boot
+boot :
+	mkdir -p ./.output/obj
+	mkdir -p ./.output/bin
+	mkdir -p ./bin
+
+	@$(MAKE) boot TOP=$(TOP) PLATFORM=$(PLATFORM) -C ./main/
+
+	cp -r ./common/.output/obj/*.o ./.output/obj/
+	cp -r ./ulib/.output/obj/*.o ./.output/obj/
+	cp -r ./main/.output/obj/*.o ./.output/obj/
+
+	$(CC) $(CFLAGS_MK) ./.output/obj/*.o -o ./.output/bin/$(PLATNAME_MK).o
+	cp -r ./.output/bin/*.o bin/
+
+#link
+
+LDSCRIPT := $(TOP)/configs/$(PLATFORM)/boot.ld
+
+.PHONY: bin
+bin:
+	$(CC) -o bin/$(PLATNAME_MK).elf ./.output/bin/ $(LDFLAGS_MK) -T$(LDSCRIPT) -Wl,-Map=bin/$(PLATNAME_MK).map
+	$(BIN) -O ihex bin/$(PLATNAME_MK).elf bin/$(PLATNAME_MK).hex
+	$(BIN) -O binary bin/$(PLATNAME_MK).elf bin/$(PLATNAME_MK).bin
+
+	$(OBJDUMP) -h -S bin/$(PLATNAME_MK).elf > bin/$(PLATNAME_MK).lss
 
 clean:
 	rm -rf ./.output
+	mkdir -p ./bin
 
-	@$(MAKE) clean TOP=$(TOPDIR) -C ./common/
-	@$(MAKE) clean TOP=$(TOPDIR) -C ./ulib/
+	@$(MAKE) clean TOP=$(TOP) PLATFORM=$(PLATFORM) -C ./common/
+	@$(MAKE) clean TOP=$(TOP) PLATFORM=$(PLATFORM) -C ./ulib/
+	@$(MAKE) clean TOP=$(TOP) PLATFORM=$(PLATFORM) -C ./main/

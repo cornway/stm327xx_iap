@@ -38,7 +38,7 @@
 #define __MAIN_H
 
 /* Includes ------------------------------------------------------------------*/
-#include "stm32f7xx_hal.h"
+#include <stm32f7xx_hal.h>
 
 //#include "stm32f769i_discovery.h"
 //#include "stm32f769i_discovery_lcd.h"
