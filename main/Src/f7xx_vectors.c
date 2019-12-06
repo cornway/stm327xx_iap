@@ -136,6 +136,11 @@ extern unsigned long _edata;     /*!< End address for the .data section       */
 extern unsigned long _sbss;      /*!< Start address for the .bss section      */
 extern unsigned long _ebss;      /*!< End address for the .bss section        */
 
+extern unsigned long __stack_mem, __stack_end;
+extern unsigned long __heap_mem, __heap_end;
+extern unsigned long __shared_mem, __shared_end;
+extern unsigned long __user_heap_mem, __user_heap_end;
+
 extern int main (void);           /*!< The entry point for the application.    */
 
 /*---------------------------------------------------------------------*

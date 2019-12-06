@@ -1,5 +1,7 @@
 PLATFORM ?= $(PLATFORM)
 TOP ?= $(TOP)
+OUT ?= $(OUT)
+Q ?= @
 
 include $(TOP)/configs/$(PLATFORM)/boot.mk
 
@@ -9,26 +11,24 @@ CCINC := $(CCINC_MK)
 CCINC += -I$(TOP)/main/Inc \
 		-I$(TOP)/ulib/pub \
 		-I$(TOP)/ulib/arch \
+		-I$(TOP)/configs/$(PLATFORM) \
 		$(HALINC_MK)
 
-boot :
-	mkdir -p ./.output/obj/
-	mkdir -p ./.output/lib/
 
-	cp -r ./Src ./.output/
-	cp -r ./Inc ./.output/
+boot : ./.output/obj/*.o
 
-	cp ./Makefile ./.output/
+./.output/obj/*.o :
+	@echo "Compiling $@..."
 
-	@$(MAKE) _boot TOP=$(TOP) -C ./.output/
+	@mkdir -p ./.output/obj/
 
-_boot:
+	@cp -r ./Src ./.output/
+	@cp -r ./Inc ./.output/
 
-	$(CC) $(CCFLAGS) $(CCINC) $(CCDEFS) -c ./Src/*.c
+	$(Q) $(CC) $(CCFLAGS) $(CCINC) $(CCDEFS) -c ./.output/Src/*.c
 
-	mv ./*.o ./obj/
-
-	$(AR) rcs ./lib/main.a ./obj/*.o
+	@mv ./*.o ./.output/obj/
+	@cp -r ./.output/obj/*.o $(OUT)
 
 clean :
-	rm -rf ./.output
+	@rm -rf ./.output

@@ -3,22 +3,45 @@ OUTPUT_FORMAT ("elf32-littlearm", "elf32-bigarm", "elf32-littlearm")
 /* Internal Memory Map*/
 MEMORY
 {
-	rom (rx)	: ORIGIN = 0x08000000, LENGTH = 2048K
-	ram (rwx)   : ORIGIN = 0x20000000, LENGTH = 256K
-	sdram (rwx) : ORIGIN = 0xC0000000, LENGTH = 0x01000000 /* first 300K is used as LCD frame buffer */
+	rom (rx)	: ORIGIN = 0x08000000, LENGTH = 1024K
+	rom2 (rx)	: ORIGIN = 0x08000000, LENGTH = 1024K
+	ram (rwx)   : ORIGIN = 0x20001000, LENGTH = 65k
+	ram2 (rwx)  : ORIGIN = 0x2007c000, LENGTH = 8K
+	shared (rw) : ORIGIN = 0x20000000, LENGTH = 1K
+	heap (rw)   : ORIGIN = 0x20012000, LENGTH = 10K
+	stack (rw)  : ORIGIN = 0x2001C000, LENGTH = 16K
+	
+	usrbss (rwx) : ORIGIN = 0x20020000, LENGTH = 348K
+	usrheap (rwx): ORIGIN = 0xC0000000, LENGTH = 16M
+
+	sdram (rw)  : ORIGIN = 0xC0000000, LENGTH = 16M
 }
 
 /* Section Definitions */ 
 SECTIONS 
 {	
-	/* external SDRAM */
 	.sdram (NOLOAD) :
 	{
 		. = ALIGN(4);
 		*(.sdram .sdram.*)
 	} > sdram
 	
-	/* program code */
+	__user_heap_mem = .;
+	.usrheap (NOLOAD) :
+	{
+	} > usrheap
+	__user_heap_end = .;
+
+	.usrbss (NOLOAD) :
+	{
+	} > usrbss
+
+	__shared_mem = .;
+	.shared (NOLOAD) :
+	{
+	} > shared
+	__shared_end = .;
+
 	.text : 
 	{ 
 		KEEP(*(.isr_vector .isr_vector.*)) 
@@ -41,18 +64,16 @@ SECTIONS
 
 	. = ALIGN(4); 
 	_etext = .;
-	_sidata = .; 
+	_sidata = .;
 
-	/* initialized data */
-	.data : AT (_etext) 
+	.data : AT (_etext)
 	{
 		_sdata = .; 
 		*(.data .data.*) 
 		. = ALIGN(4); 
 		_edata = . ;
-	} > ram
+	} > ram2
 
-	/* uninitialized data */
 	.bss (NOLOAD) : 
 	{
 		_sbss = . ; 
@@ -62,18 +83,20 @@ SECTIONS
 		_ebss = . ; 
 	} > ram
 	
-	/* stack section */
+	__stack_mem = .;
 	.stack (NOLOAD):
 	{
 		. = ALIGN(8);
 		*(.stack .stack.*)
-	} > ram
+	} > stack
+	__stack_end = .;
 
-	/* heap section */
+	__heap_mem = .;
 	.heap (NOLOAD):
 	{
 		*(.heap .heap.*)
-	} > ram
+	} > heap
+	__heap_end = .;
 	
 	. = ALIGN(4); 
 	_end = . ;

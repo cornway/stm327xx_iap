@@ -42,4 +42,29 @@ int mainloop (int argc, const char *argv[])
     return 0;
 }
 
+void *_sbrk (int amount)
+{
+    return NULL;
+}
+
+int _write(int handle, char *buf, int count)
+{
+    return -1;
+}
+
+int _close (int fd)
+{
+    return -1;
+}
+
+long _lseek(int fd, long offset, int origin)
+{
+
+} 
+
+int _read(int const fd, void * const buffer, unsigned const buffer_size)
+{
+    return -1;
+}
+
 #endif

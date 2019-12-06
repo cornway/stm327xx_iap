@@ -1,69 +1,86 @@
 TOP	:= $(shell if [ "$$PWD" != "" ]; then echo $$PWD; else pwd; fi)
 
+
 PLATFORM := stm32f769-disco
-CCVER := __ARMGCC_VERSION=1
-
-
 
 include $(TOP)/configs/$(PLATFORM)/boot.mk
 
-export CCVER_TOP := $(CCVER)
+V ?= 0
+ifeq ($(V), 0)
+Q = @
+endif
+Q ?=
 
-all: hal ulib boot
-
-#hal
-
-.PHONY: hal
-hal : _hal _bsp _com
-
-_hal :
-	@$(MAKE) hal TOP=$(TOP) PLATFORM=$(PLATFORM) -C ./common/
-
-_bsp:
-	@$(MAKE) bsp TOP=$(TOP) PLATFORM=$(PLATFORM) -C ./common/
-
-_com:
-	@$(MAKE) com TOP=$(TOP) PLATFORM=$(PLATFORM) -C ./common/
-
-#ulib
-
-.PHONY: ulib
-ulib:
-	@$(MAKE) ulib TOP=$(TOP) PLATFORM=$(PLATFORM) -C ./ulib/
-
-#main
-
-.PHONY: boot
-boot :
-	mkdir -p ./.output/obj
-	mkdir -p ./.output/bin
-	mkdir -p ./bin
-
-	@$(MAKE) boot TOP=$(TOP) PLATFORM=$(PLATFORM) -C ./main/
-
-	cp -r ./common/.output/obj/*.o ./.output/obj/
-	cp -r ./ulib/.output/obj/*.o ./.output/obj/
-	cp -r ./main/.output/obj/*.o ./.output/obj/
-
-	$(CC) $(CFLAGS_MK) ./.output/obj/*.o -o ./.output/bin/$(PLATNAME_MK).o
-	cp -r ./.output/bin/*.o bin/
-
-#link
+OBJ := .output/obj
+OUT_OBJ := $(OBJ)
 
 LDSCRIPT := $(TOP)/configs/$(PLATFORM)/boot.ld
+TARGET := $(BRDNAME_MK)
+BINDIR := bin
+OUTPUT := .output
+
+
+all: hal ulib boot bin
+
+hal :
+	@mkdir -p ./$(OUT_OBJ)
+	$(MAKE) $@ TOP=$(TOP) PLATFORM=$(PLATFORM) OUT=../$(OUT_OBJ) Q=$(Q) -C ./common/
+	$(MAKE) $@ TOP=$(TOP) PLATFORM=$(PLATFORM) OUT=../$(OUT_OBJ) Q=$(Q) -C ./common/
+	$(MAKE) $@ TOP=$(TOP) PLATFORM=$(PLATFORM) OUT=../$(OUT_OBJ) Q=$(Q) -C ./common/
+
+#ulib
+.PHONY: ulib boot
+ulib:
+	@mkdir -p ./$(OUTPUT)/obj
+	$(MAKE) ulib TOP=$(TOP) PLATFORM=$(PLATFORM) OUT=../$(OUT_OBJ) Q=$(Q) -C ./ulib/
+
+#main
+boot : 
+	@mkdir -p ./$(OUTPUT)/obj
+	$(MAKE) boot TOP=$(TOP) PLATFORM=$(PLATFORM) OUT=../$(OUT_OBJ) Q=$(Q) -C ./main/
+
+bin : bin/elf bin/bin bin/hex
 
 .PHONY: bin
-bin:
-	$(CC) -o bin/$(PLATNAME_MK).elf ./.output/bin/ $(LDFLAGS_MK) -T$(LDSCRIPT) -Wl,-Map=bin/$(PLATNAME_MK).map
-	$(BIN) -O ihex bin/$(PLATNAME_MK).elf bin/$(PLATNAME_MK).hex
-	$(BIN) -O binary bin/$(PLATNAME_MK).elf bin/$(PLATNAME_MK).bin
+bin/elf : $(BINDIR)/$(TARGET).elf
+bin/hex : $(BINDIR)/$(TARGET).hex
+bin/bin : $(BINDIR)/$(TARGET).bin
+bin/lss : $(BINDIR)/$(TARGET).lss
 
-	$(OBJDUMP) -h -S bin/$(PLATNAME_MK).elf > bin/$(PLATNAME_MK).lss
+$(BINDIR)/$(TARGET).elf :
+	@echo "Linking $@..."
+	@mkdir -p ./$(BINDIR)
+	$(Q) $(CC) -v  -o $@ $(OUT_OBJ)/*.o $(LDFLAGS_MK) -T$(LDSCRIPT) -Wl,-Map=bin/$(TARGET).map
+
+$(BINDIR)/$(TARGET).hex : $(BINDIR)/$(TARGET).elf
+	@echo "Generating $@..."
+	$(Q) $(BIN) -O ihex $< $@
+
+$(BINDIR)/$(TARGET).bin : $(BINDIR)/$(TARGET).elf
+	@echo "Generating $@..."
+	$(Q) $(BIN) -O binary $< $@
+
+$(BINDIR)/$(TARGET).lss : $(BINDIR)/$(TARGET).elf
+	@echo "Generating $@..."
+	$(Q) $(OBJDUMP) -h -S $< > $@
+
+
+hal/clean :
+	$(MAKE) clean TOP=$(TOP) PLATFORM=$(PLATFORM) OUT=../$(OUT_OBJ) -C ./common
+
+ulib/clean :
+	$(MAKE) clean TOP=$(TOP) PLATFORM=$(PLATFORM) -C ./ulib/
+
+boot/clean :
+	$(MAKE) clean TOP=$(TOP) PLATFORM=$(PLATFORM) -C ./main/
+
+bin/clean :
+	@rm -rf ./$(BINDIR)
 
 clean:
-	rm -rf ./.output
-	mkdir -p ./bin
+	@rm -rf ./.output
+	@rm -rf ./bin
 
-	@$(MAKE) clean TOP=$(TOP) PLATFORM=$(PLATFORM) -C ./common/
-	@$(MAKE) clean TOP=$(TOP) PLATFORM=$(PLATFORM) -C ./ulib/
-	@$(MAKE) clean TOP=$(TOP) PLATFORM=$(PLATFORM) -C ./main/
+	$(MAKE) clean TOP=$(TOP) PLATFORM=$(PLATFORM) -C ./common/
+	$(MAKE) clean TOP=$(TOP) PLATFORM=$(PLATFORM) -C ./ulib/
+	$(MAKE) clean TOP=$(TOP) PLATFORM=$(PLATFORM) -C ./main/
