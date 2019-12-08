@@ -31,6 +31,18 @@ CCDEFS_MK = \
     -DBSP_DRIVER \
 	$(CCDEFS_ARCH_MK)
 
+ifeq ($(HAVE_HEAP_TRACE), 1)
+CCDEFS_MK += -DHEAP_TRACE=1
+else
+CCDEFS_MK += -DHEAP_TRACE=0
+endif
+
+ifeq ($(USE_SAFE_TTY), 1)
+CCDEFS_MK += -DUSE_SAFE_TTY=1
+else
+CCDEFS_MK += -DUSE_SAFE_TTY=0
+endif
+
 HALSRC_MK = $(TOP)/common/$(ARCHNAME_MK)_Driver
 
 HALINC_MK = \

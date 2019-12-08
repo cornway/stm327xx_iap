@@ -22,6 +22,8 @@ OUTPUT := .output
 
 all: hal ulib boot bin
 
+rebuild: clean all
+
 hal :
 	@mkdir -p ./$(OUT_OBJ)
 	$(MAKE) $@ TOP=$(TOP) PLATFORM=$(PLATFORM) OUT=../$(OUT_OBJ) Q=$(Q) -C ./common/
@@ -31,12 +33,12 @@ hal :
 #ulib
 .PHONY: ulib boot
 ulib:
-	@mkdir -p ./$(OUTPUT)/obj
+	@mkdir -p ./$(OUT_OBJ)
 	$(MAKE) ulib TOP=$(TOP) PLATFORM=$(PLATFORM) OUT=../$(OUT_OBJ) Q=$(Q) -C ./ulib/
 
 #main
 boot : 
-	@mkdir -p ./$(OUTPUT)/obj
+	@mkdir -p ./$(OUT_OBJ)
 	$(MAKE) boot TOP=$(TOP) PLATFORM=$(PLATFORM) OUT=../$(OUT_OBJ) Q=$(Q) -C ./main/
 
 bin : bin/elf bin/bin bin/hex
@@ -47,10 +49,12 @@ bin/hex : $(BINDIR)/$(TARGET).hex
 bin/bin : $(BINDIR)/$(TARGET).bin
 bin/lss : $(BINDIR)/$(TARGET).lss
 
-$(BINDIR)/$(TARGET).elf :
+./$(OUT_OBJ)/*.o : hal ulib boot
+
+$(BINDIR)/$(TARGET).elf : ./$(OUT_OBJ)/*.o
 	@echo "Linking $@..."
 	@mkdir -p ./$(BINDIR)
-	$(Q) $(CC) -v  -o $@ $(OUT_OBJ)/*.o $(LDFLAGS_MK) -T$(LDSCRIPT) -Wl,-Map=bin/$(TARGET).map
+	$(Q) $(CC) -v -o $@ $(OUT_OBJ)/*.o $(LDFLAGS_MK) -T$(LDSCRIPT) -Wl,-Map=bin/$(TARGET).map
 
 $(BINDIR)/$(TARGET).hex : $(BINDIR)/$(TARGET).elf
 	@echo "Generating $@..."

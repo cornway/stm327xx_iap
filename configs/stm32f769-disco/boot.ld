@@ -5,10 +5,9 @@ MEMORY
 {
 	rom (rx)	: ORIGIN = 0x08000000, LENGTH = 1024K
 	rom2 (rx)	: ORIGIN = 0x08000000, LENGTH = 1024K
-	ram (rwx)   : ORIGIN = 0x20001000, LENGTH = 65k
+	ram (rwx)   : ORIGIN = 0x20001000, LENGTH = 75k
 	ram2 (rwx)  : ORIGIN = 0x2007c000, LENGTH = 8K
 	shared (rw) : ORIGIN = 0x20000000, LENGTH = 1K
-	heap (rw)   : ORIGIN = 0x20012000, LENGTH = 10K
 	stack (rw)  : ORIGIN = 0x2001C000, LENGTH = 16K
 	
 	usrbss (rwx) : ORIGIN = 0x20020000, LENGTH = 348K
@@ -19,28 +18,35 @@ MEMORY
 
 /* Section Definitions */ 
 SECTIONS 
-{	
+{
 	.sdram (NOLOAD) :
 	{
+		__sdram_mem = .;
 		. = ALIGN(4);
 		*(.sdram .sdram.*)
+		__sdram_end = .;
 	} > sdram
 	
-	__user_heap_mem = .;
-	.usrheap (NOLOAD) :
+	.usrheap (OVERLAY) :
 	{
+		__user_heap_mem = .;
+		*(.usrheap .usrheap.*)
+		__user_heap_end = .;
 	} > usrheap
-	__user_heap_end = .;
 
 	.usrbss (NOLOAD) :
 	{
+		__user_bss_mem = .;
+		*(.usrbss .usrbss.*)
+		__user_bss_end = .;
 	} > usrbss
 
-	__shared_mem = .;
 	.shared (NOLOAD) :
 	{
+		__shared_mem = .;
+		*(.shared .shared.*)
+		__shared_end = .;
 	} > shared
-	__shared_end = .;
 
 	.text : 
 	{ 
@@ -77,27 +83,22 @@ SECTIONS
 	.bss (NOLOAD) : 
 	{
 		_sbss = . ; 
-		*(.bss .bss.*) 
+		*(.bss .bss.*)
+		__heap_mem = .;
 		*(COMMON) 
+		__heap_end = .;
 		. = ALIGN(4); 
 		_ebss = . ; 
 	} > ram
 	
-	__stack_mem = .;
 	.stack (NOLOAD):
 	{
+		__stack_mem = .;
 		. = ALIGN(8);
 		*(.stack .stack.*)
+		__stack_end = .;
 	} > stack
-	__stack_end = .;
 
-	__heap_mem = .;
-	.heap (NOLOAD):
-	{
-		*(.heap .heap.*)
-	} > heap
-	__heap_end = .;
-	
 	. = ALIGN(4); 
 	_end = . ;
 }
