@@ -8,14 +8,17 @@ AR := arm-none-eabi-ar
 BIN := arm-none-eabi-objcopy
 OBJDUMP := arm-none-eabi-objdump
 
+OPTLVL := -O0
+OPTDBG := -gdwarf-4 -g3 -ggdb 
+
 MCPUNAME_MK := armv7
 ARCHNAME_MK := STM32F7xx
 BRDNAME_MK := STM32F769I-Discovery
 MACHNAME_MK := stm32
 
-CCFLAGS_MK := -mthumb -mtune=cortex-m7 -march=armv7e-m -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mlittle-endian
-LDFLAGS_MK := -mthumb -mtune=cortex-m7 -march=armv7e-m -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mlittle-endian -lm -nostartfiles
-ASFLAGS_MK := -mcpu=cortex-m7 -march=armv7e-m -mthumb -mfloat-abi=hard
+CCFLAGS_MK := $(OPTLVL) $(OPTDBG) -mthumb -mtune=cortex-m7 -march=armv7e-m -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mlittle-endian
+LDFLAGS_MK := $(OPTDBG) -mthumb -mtune=cortex-m7 -march=armv7e-m -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mlittle-endian -lm -nostartfiles
+ASFLAGS_MK := $(OPTDBG) -mthumb -mcpu=cortex-m7 -march=armv7e-m -mfloat-abi=hard -mfpu=fpv4-sp-d16
 
 CCDEFS_MK = \
 	-D__ARCH_ARM_M7__=1 \
