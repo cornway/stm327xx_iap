@@ -42,7 +42,7 @@
 ; <h> Stack Configuration
 ;   <o> Stack Size (in Bytes) <0x0-0xFFFFFFFF:8>
 ; </h>
-Heap_Size       EQU     0x7000
+Heap_Size       EQU     0xB000
 Stack_Size		EQU     0x4000
 
                 AREA    STACK, NOINIT, READWRITE, ALIGN=3
@@ -619,19 +619,10 @@ MDIOS_IRQHandler
                  EXPORT  Heap_Size
                  EXPORT  Shared_Mem
                  EXPORT  Shared_Size
-                 EXPORT __arch_user_heap
+				 EXPORT  UserHeap_Mem
+				 EXPORT  UserHeap_Size
                  EXPORT __arch_vtor_size
-                 EXPORT __arch_entry_ptr
-
-__arch_user_heap PROC
-                 PUSH {R2}
-                 LDR R2, =UserHeap_Mem
-                 STR R2, [R0]
-                 LDR R2, =UserHeap_Size
-                 STR R2, [R1]
-                 POP {R2}
-                 BX  LR
-                 ENDP 
+                 EXPORT __arch_entry_ptr 
 
 __arch_vtor_size PROC
                  PUSH {R2}
