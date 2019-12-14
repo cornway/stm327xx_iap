@@ -8,4 +8,8 @@
 /common
 /bbox
 /freetype
+/.output
+/main/.output
+/bin
+/ulib
 /.repo

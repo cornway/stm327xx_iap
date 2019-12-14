@@ -23,8 +23,7 @@ void VID_PreConfig (void)
 
     conf.res_x = -1;
     conf.res_y = -1;
-    conf.alloc.malloc = heap_alloc_shared;
-    conf.alloc.free = heap_free;
+    heap_set_api_shared(&conf.alloc);
     conf.colormode = GFX_COLOR_MODE_RGBA8888;
     conf.laynum = 1;
     conf.hwaccel = 0;
@@ -40,6 +39,41 @@ int mainloop (int argc, const char *argv[])
     vid_print_info();
     boot_main(argc, argv);
     return 0;
+}
+
+void *_sbrk (int amount)
+{
+    return NULL;
+}
+
+int _write(int handle, char *buf, int count)
+{
+    return -1;
+}
+
+int _close (int fd)
+{
+    return -1;
+}
+
+long _lseek(int fd, long offset, int origin)
+{
+
+} 
+
+int _read(int const fd, void * const buffer, unsigned const buffer_size)
+{
+    return -1;
+}
+
+void __c_hard_fault (arch_word_t p0, arch_word_t p1)
+{
+    while (1) {};
+}
+
+void SysTick_Handler (void)
+{
+  HAL_IncTick();
 }
 
 #endif
