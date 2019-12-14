@@ -5,9 +5,9 @@ MEMORY
 {
 	rom (rx)	: ORIGIN = 0x08000000, LENGTH = 1024K
 	rom2 (rx)	: ORIGIN = 0x08000000, LENGTH = 1024K
-	ram (rwx)   : ORIGIN = 0x20001000, LENGTH = 75k
-	ram2 (rwx)  : ORIGIN = 0x2007c000, LENGTH = 8K
 	shared (rw) : ORIGIN = 0x20000000, LENGTH = 1K
+	ram (rwx)   : ORIGIN = 0x20001000, LENGTH = 79k
+	ram2 (rwx)  : ORIGIN = 0x20015000, LENGTH = 4K
 	stack (rw)  : ORIGIN = 0x2001C000, LENGTH = 16K
 	
 	usrbss (rwx) : ORIGIN = 0x20020000, LENGTH = 348K
@@ -85,7 +85,7 @@ SECTIONS
 		_sbss = . ; 
 		*(.bss .bss.*)
 		__heap_mem = .;
-		*(COMMON) 
+		*(COMMON .heap .heap.*) 
 		__heap_end = .;
 		. = ALIGN(4); 
 		_ebss = . ; 

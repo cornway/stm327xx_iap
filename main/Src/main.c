@@ -48,6 +48,7 @@ void *_sbrk (int amount)
 
 int _write(int handle, char *buf, int count)
 {
+    dprintf("%s() : [%d] %s\n", __func__, handle, buf);
     return -1;
 }
 
@@ -58,7 +59,7 @@ int _close (int fd)
 
 long _lseek(int fd, long offset, int origin)
 {
-
+    return -1;
 } 
 
 int _read(int const fd, void * const buffer, unsigned const buffer_size)

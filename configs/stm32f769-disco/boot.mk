@@ -16,9 +16,12 @@ ARCHNAME_MK := STM32F7xx
 BRDNAME_MK := STM32F769I-Discovery
 MACHNAME_MK := stm32
 
-CCFLAGS_MK := $(OPTLVL) $(OPTDBG) -mthumb -mtune=cortex-m7 -march=armv7e-m -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mlittle-endian
-LDFLAGS_MK := $(OPTDBG) -mthumb -mtune=cortex-m7 -march=armv7e-m -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mlittle-endian -lm -nostartfiles
-ASFLAGS_MK := $(OPTDBG) -mthumb -mcpu=cortex-m7 -march=armv7e-m -mfloat-abi=hard -mfpu=fpv4-sp-d16
+__CCGLOB :=  -mlittle-endian -mthumb -march=armv7e-m -mfloat-abi=hard -mfpu=fpv4-sp-d16 \
+            $(OPTDBG)
+
+CCFLAGS_MK := $(__CCGLOB) $(OPTLVL) -mtune=cortex-m7 -fdata-sections -ffunction-sections
+LDFLAGS_MK := $(__CCGLOB) -mtune=cortex-m7 -lm -nostartfiles
+ASFLAGS_MK := $(__CCGLOB) -mcpu=cortex-m7
 
 CCDEFS_MK = \
 	-D__ARCH_ARM_M7__=1 \
@@ -27,12 +30,24 @@ CCDEFS_MK = \
     -DUSE_HAL_DRIVER \
     -DUSE_STM32F769I_DISCO \
     -DDATA_IN_ExtSDRAM \
-    -DUSE_LCD_HDMI \
-    -DUSE_USB_HS \
     -DSTM32_SDK \
     -DBOOT \
     -DBSP_DRIVER \
 	$(CCDEFS_ARCH_MK)
+
+ifeq ($(HAVE_USB), 1)
+CCDEFS_MK += -DUSE_USB_HS=1
+endif
+
+ifeq ($(HAVE_HDMI), 1)
+CCDEFS_MK += -DUSE_LCD_HDMI=1
+endif
+
+ifeq ($(HAVE_LIBC_MALLOC), 1)
+CCDEFS_MK += -DHAVE_LIBC_MALLOC=1
+else
+CCDEFS_MK += -DHAVE_LIBC_MALLOC=0
+endif
 
 ifeq ($(HAVE_HEAP_TRACE), 1)
 CCDEFS_MK += -DHEAP_TRACE=1
