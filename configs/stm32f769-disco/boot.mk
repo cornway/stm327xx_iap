@@ -11,6 +11,8 @@ OBJDUMP := arm-none-eabi-objdump
 OPTLVL := -O0
 OPTDBG := -gdwarf-4 -g3 -ggdb 
 
+BUILD_ARCH_MK := x86_64
+HOST_ARCH_MK := arm
 MCPUNAME_MK := armv7
 ARCHNAME_MK := STM32F7xx
 BRDNAME_MK := STM32F769I-Discovery
@@ -34,6 +36,9 @@ CCDEFS_MK = \
     -DBOOT \
     -DBSP_DRIVER \
 	$(CCDEFS_ARCH_MK)
+
+CCSHARED = -fpic
+LDSHARED = -shared
 
 ifeq ($(HAVE_USB), 1)
 CCDEFS_MK += -DUSE_USB_HS=1
