@@ -49,39 +49,21 @@ boot :
 	@mkdir -p ./$(OUT_OBJ)
 	$(MAKE) boot TOP=$(TOP) PLATFORM=$(PLATFORM) OUT=../$(OUT_OBJ) Q=$(Q) -C ./main/
 
-GLIBC_VER=2.30
-GLIBC_TOP=$(TOP)/glibc-$(GLIBC_VER)
-GLIBC_SANITY=--disable-sanity-checks
-GLIBC_PREFIX=--prefix=$(TOP)/glibc/lib
-GLIBC_HEADERS=--with-headers=/usr/include
-GLIBC_FLAGS="$(CCFLAGS)"
-GLIBC_CC="$(CC)"
-GLIBC_OBJ=./
-
-./glibc-build/*:
-	cp -r ./glibc-$(GLIBC_VER)/* ./glibc-build/
+GLIBC_BUILD=glibc-build
 
 glibc/config:
-	@mkdir -p ./glibc-build
-	@mkdir -p ./stash
-
-	@cp Makefile ./stash
-	$(Q) ./glibc-$(GLIBC_VER)/configure \
-										CC=$(CC) \
-										CCFLAGS=$(GLIBC_FLAGS) \
-										$(GLIBC_SANITY) \
-										$(GLIBC_PREFIX) \
-										$(GLIBC_HEADERS) \
-										--build=$(BUILD_ARCH_MK)-linux-gnu \
-										--host=$(HOST_ARCH_MK)-linux-gnu
-	@mv ./config.* ./glibc-build/
-	@cp ./stash/Makefile ./
+	$(shell [ -f  ./glibc_config ] && ./glibc_config)
 
 glibc/compile:
-	@cp -r ./ulib/arch/$(HOST_ARCH_MK)/include/* ./glibc-build/sysdeps/arm/include/
-	@cp ./glibc-build/sysdeps/wordsize-32/bits/wordsize.h ./glibc-build/bits/wordsize.h
+#	@cp -r ./ulib/arch/$(HOST_ARCH_MK)/include/* ./glibc-build/sysdeps/arm/include/
+#	@cp ./glibc-build/sysdeps/wordsize-32/bits/wordsize.h ./glibc-build/bits/wordsize.h
+#	sudo cp -r /usr/src/linux-headers-5.0.0-37/arch/arm/include/* /usr/include/
 
-	$(MAKE) objdir=$(GLIBC_OBJ) -C ./glibc-build
+	$(MAKE) -C ./glibc-build
+#	$(MAKE) objdir=$(GLIBC_OBJ) -C ./glibc-build
+
+glibc/config/clean:
+	@rm -r glibc-build/config.*
 
 glibc/clean:
 	@rm -rf glibc-build
@@ -112,7 +94,6 @@ $(BINDIR)/$(TARGET).bin : $(BINDIR)/$(TARGET).elf
 $(BINDIR)/$(TARGET).lss : $(BINDIR)/$(TARGET).elf
 	@echo "Generating $@..."
 	$(Q) $(OBJDUMP) -h -S $< > $@
-
 
 hal/clean :
 	$(MAKE) clean TOP=$(TOP) PLATFORM=$(PLATFORM) OUT=../$(OUT_OBJ) -C ./common
