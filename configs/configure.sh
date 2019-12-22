@@ -121,7 +121,11 @@ function config_glibc () {
         config_set "[ -d \$BUILD_PATH ] && rm -rf \$BUILD_PATH"
         config_set "mkdir -p \$BUILD_PATH && cd \$BUILD_PATH\n"
 
-        config_set  "../$GLIBC_PATH/configure \\"
+        for patch in "${GLIBC_PATCH[@]}"; do
+                config_add_patch $patch
+        done
+
+        config_set  "\n../$GLIBC_PATH/configure \\"
         config_set  "\tCC=\"$CC $CFLAGS_ARCH\" \\"
         config_set  "\tCFLAGS=\"$CFLAGS $GLIBC_FLAGS\" \\"
         config_set  "\t--prefix=$path_lib \\"
@@ -134,7 +138,7 @@ function config_glibc () {
         config_set "cd ../\n"
 
         config_set "config_begin \"glibc.mk\" \"glibc.mk\""
-        config_set "config_set GLIBC_BUILD_PATH=\$BUILD_PATH"
+        config_set "config_set GLIBC_BUILD_PATH=\$BUILD_PATH\n"
 
         chmod +x $OUT_FILE
         mv $OUT_FILE $TOPDIR/

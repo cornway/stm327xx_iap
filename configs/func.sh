@@ -15,7 +15,7 @@ function config_set () {
         echo -e $1 >> $OUT_FILE
 }
 
-config_add_cdef_cond () {
+function config_add_cdef_cond () {
         dst=$1 exp=$2 name=$3 file=$OUT_FILE
 
         [ -z $name ] && name=$exp
@@ -26,7 +26,7 @@ config_add_cdef_cond () {
         echo -e "endif\n" >>  $file
 }
 
-config_set_hdr_ifeq () {
+function config_set_hdr_ifeq () {
         dst=$1 exp=$2 true=$3 false=$4 file=$OUT_FILE
 
         [ -z $true ] && true="1"; [ -z $false ] && false="0"
@@ -35,4 +35,9 @@ config_set_hdr_ifeq () {
         echo -e "#else" >> $file
         echo -e "#define $dst ($false)" >>  $file
         echo -e "#endif\n" >>  $file
+}
+
+function config_add_patch () {
+    file=$OUT_FILE
+    echo -e "cp $1 $2" >> $file
 }
