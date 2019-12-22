@@ -3,7 +3,7 @@ TOP	:= $(shell if [ "$$PWD" != "" ]; then echo $$PWD; else pwd; fi)
 
 PLATFORM := stm32f769-disco
 
-include $(TOP)/configs/$(PLATFORM)/boot.mk
+include $(TOP)/boot.mk
 
 V ?= 0
 ifeq ($(V), 0)
@@ -49,24 +49,21 @@ boot :
 	@mkdir -p ./$(OUT_OBJ)
 	$(MAKE) boot TOP=$(TOP) PLATFORM=$(PLATFORM) OUT=../$(OUT_OBJ) Q=$(Q) -C ./main/
 
-GLIBC_BUILD=glibc-build
 
-glibc/config:
-	$(shell [ -f  ./glibc_config ] && ./glibc_config)
+ifeq ($(HAVE_GLIBC),1)
+
+include $(TOP)/glibc.mk
 
 glibc/compile:
-#	@cp -r ./ulib/arch/$(HOST_ARCH_MK)/include/* ./glibc-build/sysdeps/arm/include/
-#	@cp ./glibc-build/sysdeps/wordsize-32/bits/wordsize.h ./glibc-build/bits/wordsize.h
-#	sudo cp -r /usr/src/linux-headers-5.0.0-37/arch/arm/include/* /usr/include/
-
-	$(MAKE) -C ./glibc-build
-#	$(MAKE) objdir=$(GLIBC_OBJ) -C ./glibc-build
-
-glibc/config/clean:
-	@rm -r glibc-build/config.*
+	$(MAKE) -C $(GLIBC_BUILD_PATH)
 
 glibc/clean:
-	@rm -rf glibc-build
+	$(MAKE) clean -C $(GLIBC_BUILD_PATH)
+
+glibc/clean/all:
+	rm -rf $(GLIBC_BUILD_PATH)
+
+endif #HAVE_GLIBC
 
 bin : bin/elf bin/bin bin/hex
 

@@ -1,0 +1,9 @@
+
+GLIBC_FLAGS="-O2"
+GLIBC_FLAGS="$GLIBC_FLAGS -D__USE_POSIX -D_REENTRANT=1 -D_STACK_GROWS_DOWN=1 -D__PTHREAD_MUTEX_HAVE_PREV=0"
+
+GLIBC_PARAMS=(--disable-threads)
+GLIBC_PARAMS+=(--without-__thread)
+GLIBC_PARAMS+=(--without-nptl)
+GLIBC_PARAMS+=(--without-tls)
+GLIBC_PARAMS+=(--disable-sanity-checks)

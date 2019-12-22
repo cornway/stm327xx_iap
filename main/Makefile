@@ -3,17 +3,18 @@ TOP ?= $(TOP)
 OUT ?= $(OUT)
 Q ?= @
 
-include $(TOP)/configs/$(PLATFORM)/boot.mk
+include $(TOP)/boot.mk
 
 CCFLAGS := $(CCFLAGS_MK)
 CCDEFS := $(CCDEFS_MK)
-CCINC := $(CCINC_MK)
-CCINC += -I$(TOP)/main/Inc \
-		-I$(TOP)/ulib/pub \
-		-I$(TOP)/ulib/arch \
-		-I$(TOP)/configs/$(PLATFORM) \
-		$(HALINC_MK)
 
+CCINC := $(CCINC_MK)
+CCINC += -I$(TOP)/main/Inc
+CCINC += -I$(TOP)/ulib/pub
+CCINC += -I$(TOP)/ulib/arch
+CCINC += -I$(TOP)/configs/$(PLATFORM) \
+
+export CCINC_PUB := $(CCINC)
 
 boot : ./.output/obj/*.o
 
