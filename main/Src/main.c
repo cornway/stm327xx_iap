@@ -70,7 +70,7 @@ int _read(int const fd, void * const buffer, unsigned const buffer_size)
 void __c_hard_fault (arch_word_t p0, arch_word_t p1)
 {
 extern void *cpu_rise (void *frame);
-    cpu_rise();
+    cpu_rise((void *)p0);
     while (1) {};
 }
 

@@ -5,15 +5,31 @@ source func.sh
 TOPDIR=".."
 TARGET_DIR="stm32f769-disco"
 
+CNAME="__ARMGCC_VERSION"
 TARGET_ARCH="arm"
 TARGET_CPU="armv7-m"
 TARGET_PROF="cortex-m7"
+TGT_ARCH_DEF="__ARCH_ARM_M7__"
 TC="arm-none-eabi"
 CC=$TC-"gcc"
 OPT="-O0"
 DBG="-gdwarf-4 -g3 -ggdb"
-CFLAGS_ARCH="-mlittle-endian -mthumb -march=$TARGET_CPU -mfloat-abi=hard -mfpu=fpv4-sp-d16"
+CFLAGS_ARCH="-mlittle-endian -mthumb -march=$TARGET_CPU -mfloat-abi=softfp -mfpu=fpv4-sp-d16"
 CFLAGS="-fdata-sections -ffunction-sections"
+
+function config_set_cversion () {
+        local name=$1
+
+        local cver=$($CC --version | grep ^$CC | grep -o '[0-9]\.[0-9]\.[0-9]' | head -1)
+        local maj="$(echo $cver | cut -d'.' -f1)"
+        local min="$(echo $cver | cut -d'.' -f2)"
+        local sys="$(echo $cver | cut -d'.' -f3)"
+
+        config_set "CDEFS += -D$name=$maj"
+        config_set "CDEFS += -D"$name"_MAJ=$maj"
+        config_set "CDEFS += -D"$name"_MIN=$min"
+        config_set "CDEFS += -D"$name"_SYS=$sys\n"
+}
 
 function config_target () {
         source $TARGET_DIR/config.in
@@ -21,48 +37,40 @@ function config_target () {
 
         config_set 'include $(TOP)/.config\n'
 
-        config_set "MCPUNAME_MK := $TARGET_CPU"
-        config_set "TARGET_CPU_MK := $TARGET_ARCH" 
-        config_set "ARCHNAME_MK := STM32F7xx" 
-        config_set "BRDNAME_MK := STM32F769I-Discovery" 
-        config_set "MACHNAME_MK := stm32\n"
-        config_set "CCDEFS_MK := -D__ARCH_ARM_M7__=1"
+        config_set "TARGET_CPU := $TARGET_CPU"
+        config_set "TGT_HAL_DIR := STM32F7xx"
+        config_set "TGT_PLATFORM := STM32F769I-Discovery" 
+        config_set "TGT_MACH_DIR := stm32\n"
 
-        config_set "CCFLAGS_MK := $CFLAGS_ARCH $CFLAGS $OPT $DBG -mtune=$TARGET_PROF"
-        config_set "LDFLAGS_MK := $CFLAGS_ARCH -mtune=$TARGET_PROF -lm -nostartfiles"
-        config_set "ASFLAGS_MK := $CFLAGS_ARCH -mcpu=$TARGET_PROF\n"
+        config_set "CFLAGS := $CFLAGS_ARCH $CFLAGS $OPT $DBG -mtune=$TARGET_PROF"
+        config_set "LDFLAGS := $CFLAGS_ARCH -mtune=$TARGET_PROF -lm -nostartfiles"
+        config_set "ASFLAGS := $CFLAGS_ARCH -mcpu=$TARGET_PROF\n"
 
-        CCONF_STR="CC:=xx-gcc\nAS:=xx-as\nAR:=xx-ar\nBIN:=xx-objcopy\nOBJDUMP:=xx-objdump"
-        CCONF_STR=$(sed "s/xx/$TC/g" <<< $CCONF_STR)
+        local STR="CC:=xx-gcc\nAS:=xx-as\nAR:=xx-ar\nBIN:=xx-objcopy\nOBJDUMP:=xx-objdump"
+        STR=$(sed "s/xx/$TC/g" <<< $STR)
 
-        CVERSION=$($CC --version | grep ^$CC | grep -o '[0-9]\.[0-9]\.[0-9]' | head -1)
-        CVERSION_MAJ="$(echo $CVERSION | cut -d'.' -f1)"
-        CVERSION_MIN="$(echo $CVERSION | cut -d'.' -f2)"
-        CVERSION_SYS="$(echo $CVERSION | cut -d'.' -f3)"
+        config_set "$STR\n"
 
-        config_set "CCDEFS_MK := -D__ARMGCC_VERSION=$CVERSION_MAJ"
-        config_set "CCDEFS_MK := -D__ARMGCC_VERSION_MAJ=$CVERSION_MAJ"
-        config_set "CCDEFS_MK := -D__ARMGCC_VERSION_MIN=$CVERSION_MIN"
-        config_set "CCDEFS_MK := -D__ARMGCC_VERSION_SYS=$CVERSION_SYS"
+        config_set_cversion $CNAME
 
-        config_set "HALSRC_MK := $\(TOP\)/common/$\(ARCHNAME_MK\)_Driver\n"
         for name in "${CDEFS_IN[@]}"; do
-                config_set "CCDEFS_MK += $name"
+                config_set "CDEFS += $name"
         done
 
-        config_add_cdef_cond "CCDEFS_MK"  "HAVE_USB"
-        config_add_cdef_cond "CCDEFS_MK"  "HAVE_HDMI"
-        config_add_cdef_cond "CCDEFS_MK"  "HAVE_LIBC_MALLOC"
-        config_add_cdef_cond "CCDEFS_MK"  "HAVE_HEAP_TRACE"
-        config_add_cdef_cond "CCDEFS_MK"  "HAVE_SAFE_TTY_ONLY"
-        config_add_cdef_cond "CCDEFS_MK"  "HAVE_AUDIO"
+        config_set "\nCDEFS += -D$TGT_ARCH_DEF=1"
+        config_add_cdef_cond "CDEFS"  "HAVE_USB"
+        config_add_cdef_cond "CDEFS"  "HAVE_HDMI"
+        config_add_cdef_cond "CDEFS"  "HAVE_LIBC_MALLOC"
+        config_add_cdef_cond "CDEFS"  "HAVE_HEAP_TRACE"
+        config_add_cdef_cond "CDEFS"  "HAVE_SAFE_TTY_ONLY"
+        config_add_cdef_cond "CDEFS"  "HAVE_AUDIO"
 
-        [ -z $FS_SOURCE ] && config_set "IOFS_MK:=$FS_SOURCE"
+        [ -z $FS_SOURCE ] || config_set "FS_SOURCE:=$FS_SOURCE"
 
         mv ./$OUT_FILE $TOPDIR/
 }
 
-function config_dev_header () {
+function config_set_conf_hdr () {
         source $TARGET_DIR/config.in
         config_begin "headers" $TARGET_DIR/$1
 
@@ -116,14 +124,14 @@ function config_glibc () {
         config_set '\tcase $opt in'
         config_set '    \t\to) BUILD_PATH=$OPTARG ;;'
         config_set "\tesac"
-        config_set "done"
-
-        config_set "[ -d \$BUILD_PATH ] && rm -rf \$BUILD_PATH"
-        config_set "mkdir -p \$BUILD_PATH && cd \$BUILD_PATH\n"
+        config_set "done\n"
 
         for patch in "${GLIBC_PATCH[@]}"; do
                 config_add_patch $patch
         done
+
+        config_set "\n[ -d \$BUILD_PATH ] && rm -rf \$BUILD_PATH"
+        config_set "mkdir -p \$BUILD_PATH && cd \$BUILD_PATH\n"
 
         config_set  "\n../$GLIBC_PATH/configure \\"
         config_set  "\tCC=\"$CC $CFLAGS_ARCH\" \\"
@@ -154,10 +162,10 @@ fi
 case $2 in
 "glibc" ) config_glibc "glibc_config.sh" ;;
 "target") config_target "boot.mk";
-          config_dev_header "config.h" ;;
+          config_set_conf_hdr "config.h" ;;
 *       )
 config_glibc "glibc_config.sh"
 config_target "boot.mk"
-config_dev_header "config.h"
+config_set_conf_hdr "config.h"
 ;;
 esac

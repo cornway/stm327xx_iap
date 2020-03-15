@@ -15,10 +15,16 @@ OBJ := .output/obj
 OUT_OBJ := $(OBJ)
 
 LDSCRIPT := $(TOP)/configs/$(PLATFORM)/boot.ld
-TARGET := $(BRDNAME_MK)
+TARGET := $(TGT_PLATFORM)
 BINDIR := bin
 OUTPUT := .output
 
+export CINC = \
+		-I$(TOP)/main/Inc \
+		-I$(TOP)/common/Utilities/JPEG \
+		-I$(TOP)/ulib/pub \
+		-I$(TOP)/ulib/arch \
+		-I$(TOP)/configs/$(PLATFORM) \
 
 all: hal ulib boot bin
 
@@ -26,9 +32,7 @@ rebuild: clean all
 
 hal :
 	@mkdir -p ./$(OUT_OBJ)
-	$(MAKE) $@ TOP=$(TOP) PLATFORM=$(PLATFORM) OUT=../$(OUT_OBJ) Q=$(Q) -C ./common/
-	$(MAKE) $@ TOP=$(TOP) PLATFORM=$(PLATFORM) OUT=../$(OUT_OBJ) Q=$(Q) -C ./common/
-	$(MAKE) $@ TOP=$(TOP) PLATFORM=$(PLATFORM) OUT=../$(OUT_OBJ) Q=$(Q) -C ./common/
+	@$(MAKE) $@ TOP=$(TOP) PLATFORM=$(PLATFORM) OUT=../$(OUT_OBJ) Q=$(Q) -C ./common/
 
 #ulib
 .PHONY: ulib boot
@@ -61,7 +65,7 @@ glibc/clean:
 	$(MAKE) clean -C $(GLIBC_BUILD_PATH)
 
 glibc/clean/all:
-	rm -rf $(GLIBC_BUILD_PATH)
+	@rm -rf $(GLIBC_BUILD_PATH)
 
 endif #HAVE_GLIBC
 
@@ -78,7 +82,7 @@ bin/lss : $(BINDIR)/$(TARGET).lss
 $(BINDIR)/$(TARGET).elf : ./$(OUT_OBJ)/*.o
 	@echo "Linking $@..."
 	@mkdir -p ./$(BINDIR)
-	$(Q) $(CC) -v -o $@ $(OUT_OBJ)/*.o $(LDFLAGS_MK) -T$(LDSCRIPT) -Wl,-Map=bin/$(TARGET).map
+	$(Q) $(CC) -v -o $@ $(OUT_OBJ)/*.o $(LDFLAGS) -T$(LDSCRIPT) -Wl,-Map=bin/$(TARGET).map
 
 $(BINDIR)/$(TARGET).hex : $(BINDIR)/$(TARGET).elf
 	@echo "Generating $@..."
@@ -93,21 +97,21 @@ $(BINDIR)/$(TARGET).lss : $(BINDIR)/$(TARGET).elf
 	$(Q) $(OBJDUMP) -h -S $< > $@
 
 hal/clean :
-	$(MAKE) clean TOP=$(TOP) PLATFORM=$(PLATFORM) OUT=../$(OUT_OBJ) -C ./common
+	@$(MAKE) clean TOP=$(TOP) PLATFORM=$(PLATFORM) OUT=../$(OUT_OBJ) -C ./common
 
 ulib/clean :
-	$(MAKE) clean TOP=$(TOP) PLATFORM=$(PLATFORM) -C ./ulib/
+	@$(MAKE) clean TOP=$(TOP) PLATFORM=$(PLATFORM) -C ./ulib/
 
 boot/clean :
-	$(MAKE) clean TOP=$(TOP) PLATFORM=$(PLATFORM) -C ./main/
+	@$(MAKE) clean TOP=$(TOP) PLATFORM=$(PLATFORM) -C ./main/
 
 bin/clean :
 	@rm -rf ./$(BINDIR)
 
-clean: clean/glibc
+clean:
 	@rm -rf ./.output
 	@rm -rf ./bin
 
-	$(MAKE) clean TOP=$(TOP) PLATFORM=$(PLATFORM) -C ./common/
-	$(MAKE) clean TOP=$(TOP) PLATFORM=$(PLATFORM) -C ./ulib/
-	$(MAKE) clean TOP=$(TOP) PLATFORM=$(PLATFORM) -C ./main/
+	@$(MAKE) clean TOP=$(TOP) PLATFORM=$(PLATFORM) -C ./common/
+	@$(MAKE) clean TOP=$(TOP) PLATFORM=$(PLATFORM) -C ./ulib/
+	@$(MAKE) clean TOP=$(TOP) PLATFORM=$(PLATFORM) -C ./main/

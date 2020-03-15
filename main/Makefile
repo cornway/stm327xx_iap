@@ -5,9 +5,6 @@ Q ?= @
 
 include $(TOP)/boot.mk
 
-CCFLAGS := $(CCFLAGS_MK)
-CCDEFS := $(CCDEFS_MK)
-
 CCINC := $(CCINC_MK)
 CCINC += -I$(TOP)/main/Inc
 CCINC += -I$(TOP)/ulib/pub
@@ -26,7 +23,7 @@ boot : ./.output/obj/*.o
 	@cp -r ./Src ./.output/
 	@cp -r ./Inc ./.output/
 
-	$(Q) $(CC) $(CCFLAGS) $(CCINC) $(CCDEFS) -c ./.output/Src/*.c
+	$(Q) $(CC) $(CFLAGS) $(CCINC) $(CDEFS) -c ./.output/Src/*.c
 
 	@mv ./*.o ./.output/obj/
 	@cp -r ./.output/obj/*.o $(OUT)
