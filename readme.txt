@@ -1,4 +1,3 @@
-
 # stm32xx IAP Driver
 In-Application-Programming Driver
 This is the top instance used to build iap driver image.
