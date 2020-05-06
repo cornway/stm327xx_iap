@@ -40,10 +40,19 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+    
+#if defined(USE_STM32H745I_DISCO)
 
+#include "stm32h745i_discovery_audio.h"
+
+#elif defined(USE_STM32F769I_DISCO)
+    
 #include "stm32f769i_discovery_audio.h"
 #include "stm32f769i_discovery_sd.h"
 
+#else
+#error ""
+#endif
 /* Includes ------------------------------------------------------------------*/
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
