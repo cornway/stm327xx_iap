@@ -40,8 +40,12 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-    
-#if defined(USE_STM32H745I_DISCO)
+
+#if defined(USE_STM32H747I_DISCO)
+
+#include "stm32h747i_discovery_audio.h"
+
+#elif defined(USE_STM32H745I_DISCO)
 
 #include "stm32h745i_discovery_audio.h"
 
