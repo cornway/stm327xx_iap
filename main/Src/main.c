@@ -23,7 +23,8 @@ void VID_PreConfig (void)
 
     conf.res_x = -1;
     conf.res_y = -1;
-    heap_set_api_shared(&conf.alloc);
+    conf.alloc.malloc = heap_alloc_shared_ptr;
+    conf.alloc.free = heap_free_ptr;
     conf.colormode = GFX_COLOR_MODE_RGBA8888;
     conf.laynum = 1;
     conf.hwaccel = 0;
