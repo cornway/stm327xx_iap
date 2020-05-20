@@ -150,7 +150,7 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>256</LineNumber>
+          <LineNumber>2365</LineNumber>
           <EnabledFlag>1</EnabledFlag>
           <Address>0</Address>
           <ByteObject>0</ByteObject>
@@ -159,14 +159,14 @@
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>0</BreakIfRCount>
-          <Filename>..\ulib\audio\audio_main.c</Filename>
+          <Filename>E:\work\boot32\common\STM32H7xx_Driver\Src\stm32h7xx_hal_uart.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression></Expression>
         </Bp>
         <Bp>
           <Number>1</Number>
           <Type>0</Type>
-          <LineNumber>54</LineNumber>
+          <LineNumber>621</LineNumber>
           <EnabledFlag>1</EnabledFlag>
           <Address>0</Address>
           <ByteObject>0</ByteObject>
@@ -175,7 +175,23 @@
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>0</BreakIfRCount>
-          <Filename>..\ulib\pub\ulib_main.c</Filename>
+          <Filename>..\common\hal\uart_hal.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression></Expression>
+        </Bp>
+        <Bp>
+          <Number>2</Number>
+          <Type>0</Type>
+          <LineNumber>635</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>0</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>0</BreakIfRCount>
+          <Filename>..\common\hal\uart_hal.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression></Expression>
         </Bp>
@@ -360,34 +376,50 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>54</LineNumber>
+          <LineNumber>2365</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134365624</Address>
+          <Address>134276656</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\ulib\pub\ulib_main.c</Filename>
+          <Filename>E:\work\boot32\common\STM32H7xx_Driver\Src\stm32h7xx_hal_uart.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\Project\../ulib/pub/ulib_main.c\54</Expression>
+          <Expression>\\Project\../common/STM32H7xx_Driver/Src/stm32h7xx_hal_uart.c\2365</Expression>
         </Bp>
         <Bp>
           <Number>1</Number>
           <Type>0</Type>
-          <LineNumber>256</LineNumber>
+          <LineNumber>635</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134339424</Address>
+          <Address>134236946</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\ulib\audio\audio_main.c</Filename>
+          <Filename>..\common\hal\uart_hal.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\Project\../ulib/audio/audio_main.c\256</Expression>
+          <Expression>\\Project\../common/hal/uart_hal.c\635</Expression>
+        </Bp>
+        <Bp>
+          <Number>2</Number>
+          <Type>0</Type>
+          <LineNumber>621</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134277544</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>..\common\hal\uart_hal.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\Project\../common/hal/uart_hal.c\621</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -406,12 +438,22 @@
           <WinNumber>1</WinNumber>
           <ItemText>streambuf</ItemText>
         </Ww>
+        <Ww>
+          <count>3</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>uart_desc_pool</ItemText>
+        </Ww>
+        <Ww>
+          <count>4</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>uart_desc_cnt</ItemText>
+        </Ww>
       </WatchWindow1>
       <MemoryWindow1>
         <Mm>
           <WinNumber>1</WinNumber>
-          <SubType>2</SubType>
-          <ItemText>0xd1f00000</ItemText>
+          <SubType>8</SubType>
+          <ItemText>0x240602F8</ItemText>
           <AccSizeX>0</AccSizeX>
         </Mm>
       </MemoryWindow1>
@@ -457,6 +499,16 @@
       <pszMrulep></pszMrulep>
       <pSingCmdsp></pSingCmdsp>
       <pMultCmdsp></pMultCmdsp>
+      <SystemViewers>
+        <Entry>
+          <Name>System Viewer\DMA2</Name>
+          <WinId>35904</WinId>
+        </Entry>
+        <Entry>
+          <Name>System Viewer\USART1</Name>
+          <WinId>35905</WinId>
+        </Entry>
+      </SystemViewers>
       <DebugDescription>
         <Enable>1</Enable>
         <EnableLog>0</EnableLog>
@@ -568,7 +620,7 @@
 
   <Group>
     <GroupName>hal-bsp</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
