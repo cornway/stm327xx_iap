@@ -14,7 +14,7 @@ extern int bsp_drv_main (void);
 
 int main(void)
 {
-    bsp_drv_main();
+    return bsp_drv_main();
 }
 
 void VID_PreConfig (void)
@@ -25,7 +25,7 @@ void VID_PreConfig (void)
     conf.res_y = -1;
     conf.alloc.malloc = heap_alloc_shared_ptr;
     conf.alloc.free = heap_free_ptr;
-    conf.colormode = GFX_COLOR_MODE_RGBA8888;
+    conf.colormode = GFX_COLOR_MODE_ARGB8888;
     conf.laynum = 1;
     conf.hwaccel = 0;
     conf.cachealgo = VID_CACHE_WBNWA;
