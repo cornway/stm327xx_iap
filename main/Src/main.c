@@ -1,9 +1,19 @@
 /* Includes ------------------------------------------------------------------*/
-#if !defined MODULE
+#include <stdint.h>
+#include <stdarg.h>
+#include <stdio.h>
+#include <string.h>
 
 #include <main.h>
+#include <arch.h>
+#include <bsp_api.h>
+#include <misc_utils.h>
+#include <debug.h>
+#include <gfx.h>
+#include <gfx2d_mem.h>
 #include <lcd_main.h>
 #include <heap.h>
+#include <nvic.h>
 #include <audio_main.h>
 #include <gui.h>
 
@@ -42,40 +52,3 @@ int mainloop (int argc, const char *argv[])
     return 0;
 }
 
-void *_sbrk (int amount)
-{
-    return NULL;
-}
-
-int _write(int handle, char *buf, int count)
-{
-    dprintf("%s() : [%d] %s\n", __func__, handle, buf);
-    return -1;
-}
-
-int _close (int fd)
-{
-    return -1;
-}
-
-long _lseek(int fd, long offset, int origin)
-{
-    return -1;
-} 
-
-int _read(int const fd, void * const buffer, unsigned const buffer_size)
-{
-    return -1;
-}
-
-void __c_hard_fault (arch_word_t p0, arch_word_t p1)
-{
-    while (1) {};
-}
-
-void SysTick_Handler (void)
-{
-  HAL_IncTick();
-}
-
-#endif

@@ -601,6 +601,11 @@
               <FileType>1</FileType>
               <FilePath>..\common\hal\uart_hal.c</FilePath>
             </File>
+            <File>
+              <FileName>it_export.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\int\it_export.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -908,6 +913,21 @@
               <FileName>term.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\ulib\misc\term.c</FilePath>
+            </File>
+            <File>
+              <FileName>swtim.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\ulib\misc\src\swtim.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>gpio.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\ulib\pub\gpio.h</FilePath>
+            </File>
+            <File>
+              <FileName>new.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\ulib\misc\src\new.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -1292,24 +1312,9 @@
           </GroupOption>
           <Files>
             <File>
-              <FileName>jpeg_utils.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\common\Utilities\JPEG\jpeg_utils.c</FilePath>
-            </File>
-            <File>
               <FileName>font8.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\common\Utilities\Fonts\font8.c</FilePath>
-            </File>
-            <File>
-              <FileName>font12.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\common\Utilities\Fonts\font12.c</FilePath>
-            </File>
-            <File>
-              <FileName>font16.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\common\Utilities\Fonts\font16.c</FilePath>
             </File>
             <File>
               <FileName>font20.c</FileName>
@@ -1320,6 +1325,26 @@
               <FileName>font24.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\common\Utilities\Fonts\font24.c</FilePath>
+            </File>
+            <File>
+              <FileName>font16.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\Utilities\Fonts\font16.c</FilePath>
+            </File>
+            <File>
+              <FileName>font12.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\Utilities\Fonts\font12.c</FilePath>
+            </File>
+            <File>
+              <FileName>basic_gui.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\Utilities\Basic_GUI\basic_gui.c</FilePath>
+            </File>
+            <File>
+              <FileName>jpeg_utils.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\Utilities\JPEG\jpeg_utils.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1460,7 +1485,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>hal-f7xx-src</GroupName>
+          <GroupName>hal-h7xx-src</GroupName>
           <Files>
             <File>
               <FileName>stm32h7xx_hal.c</FileName>
@@ -2378,7 +2403,7 @@
             <wLevel>2</wLevel>
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
-            <uC99>1</uC99>
+            <uC99>0</uC99>
             <useXO>0</useXO>
             <v6Lang>1</v6Lang>
             <v6LangP>1</v6LangP>
@@ -2388,7 +2413,7 @@
             <v6WtE>0</v6WtE>
             <v6Rtti>0</v6Rtti>
             <VariousControls>
-              <MiscControls></MiscControls>
+              <MiscControls>--cpp11 --gnu</MiscControls>
               <Define>STM32H747xx,USE_HAL_DRIVER,USE_STM32H747I_DISCO,DATA_IN_ExtSDRAM,USE_LCD_HDMI,USE_USB_HS,STM32_SDK,BOOT,BSP_DRIVER,HAVE_CODESWAP,__ARCH_ARM_M7__,CORE_CM7,USE_SMP</Define>
               <Undefine></Undefine>
               <IncludePath>..\common\STM32H7xx_Driver\CMSIS\Include;..\common\STM32H7xx_Driver\CMSIS\Device\ST\STM32H7xx\Include;..\common\STM32H7xx_Driver\Inc;..\common\STM32H7xx_Driver\BSP\Components\Common;..\common\STM32H7xx_Driver\BSP\STM32H747I-DISCO;..\ulib\pub;..\ulib\boot\inc;..\ulib\arch;..\main\Inc;..\configs\stm32h745-disco;..\common\int;..\common\Utilities\JPEG;..\ulib\io\fs\FatFs\src</IncludePath>
@@ -2637,6 +2662,11 @@
               <FileType>1</FileType>
               <FilePath>..\common\hal\uart_hal.c</FilePath>
             </File>
+            <File>
+              <FileName>it_export.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\int\it_export.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2877,6 +2907,21 @@
               <FileType>1</FileType>
               <FilePath>..\ulib\misc\term.c</FilePath>
             </File>
+            <File>
+              <FileName>swtim.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\ulib\misc\src\swtim.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>gpio.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\ulib\pub\gpio.h</FilePath>
+            </File>
+            <File>
+              <FileName>new.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\ulib\misc\src\new.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2988,24 +3033,9 @@
           <GroupName>utils</GroupName>
           <Files>
             <File>
-              <FileName>jpeg_utils.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\common\Utilities\JPEG\jpeg_utils.c</FilePath>
-            </File>
-            <File>
               <FileName>font8.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\common\Utilities\Fonts\font8.c</FilePath>
-            </File>
-            <File>
-              <FileName>font12.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\common\Utilities\Fonts\font12.c</FilePath>
-            </File>
-            <File>
-              <FileName>font16.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\common\Utilities\Fonts\font16.c</FilePath>
             </File>
             <File>
               <FileName>font20.c</FileName>
@@ -3016,6 +3046,26 @@
               <FileName>font24.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\common\Utilities\Fonts\font24.c</FilePath>
+            </File>
+            <File>
+              <FileName>font16.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\Utilities\Fonts\font16.c</FilePath>
+            </File>
+            <File>
+              <FileName>font12.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\Utilities\Fonts\font12.c</FilePath>
+            </File>
+            <File>
+              <FileName>basic_gui.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\Utilities\Basic_GUI\basic_gui.c</FilePath>
+            </File>
+            <File>
+              <FileName>jpeg_utils.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\Utilities\JPEG\jpeg_utils.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3088,7 +3138,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>hal-f7xx-src</GroupName>
+          <GroupName>hal-h7xx-src</GroupName>
           <GroupOption>
             <CommonProperty>
               <UseCPPCompiler>0</UseCPPCompiler>
@@ -4469,6 +4519,11 @@
               <FileType>1</FileType>
               <FilePath>..\common\hal\uart_hal.c</FilePath>
             </File>
+            <File>
+              <FileName>it_export.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\int\it_export.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -4776,6 +4831,21 @@
               <FileName>term.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\ulib\misc\term.c</FilePath>
+            </File>
+            <File>
+              <FileName>swtim.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\ulib\misc\src\swtim.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>gpio.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\ulib\pub\gpio.h</FilePath>
+            </File>
+            <File>
+              <FileName>new.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\ulib\misc\src\new.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -5160,24 +5230,9 @@
           </GroupOption>
           <Files>
             <File>
-              <FileName>jpeg_utils.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\common\Utilities\JPEG\jpeg_utils.c</FilePath>
-            </File>
-            <File>
               <FileName>font8.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\common\Utilities\Fonts\font8.c</FilePath>
-            </File>
-            <File>
-              <FileName>font12.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\common\Utilities\Fonts\font12.c</FilePath>
-            </File>
-            <File>
-              <FileName>font16.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\common\Utilities\Fonts\font16.c</FilePath>
             </File>
             <File>
               <FileName>font20.c</FileName>
@@ -5188,6 +5243,26 @@
               <FileName>font24.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\common\Utilities\Fonts\font24.c</FilePath>
+            </File>
+            <File>
+              <FileName>font16.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\Utilities\Fonts\font16.c</FilePath>
+            </File>
+            <File>
+              <FileName>font12.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\Utilities\Fonts\font12.c</FilePath>
+            </File>
+            <File>
+              <FileName>basic_gui.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\Utilities\Basic_GUI\basic_gui.c</FilePath>
+            </File>
+            <File>
+              <FileName>jpeg_utils.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\Utilities\JPEG\jpeg_utils.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -5396,7 +5471,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>hal-f7xx-src</GroupName>
+          <GroupName>hal-h7xx-src</GroupName>
           <Files>
             <File>
               <FileName>stm32h7xx_hal.c</FileName>

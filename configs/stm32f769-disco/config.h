@@ -1,8 +1,6 @@
 #ifndef __DEV_CONF_H__
 #define __DEV_CONF_H__
 
-#if defined(BSP_DRIVER)
-
 #define NVIC_IRQ_MAX                (32)
 
 #define DEBUG_SERIAL                (1)
@@ -19,8 +17,6 @@
 
 #define DEVIO_READONLY              (0)
 #define MAX_HANDLES                 (6)
-
-#endif /*BSP_DRIVER*/
 
 #define DEV_MAXXDIM                 (320)
 #define DEV_MAXYDIM                 (240)
