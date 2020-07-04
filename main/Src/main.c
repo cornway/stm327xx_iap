@@ -27,14 +27,24 @@ int main(void)
     return bsp_drv_main();
 }
 
+void *vid_alloc (uint32_t size)
+{
+    return heap_alloc_shared(size);
+}
+
+void vid_free (void *p)
+{
+    heap_free(p);
+}
+
 void VID_PreConfig (void)
 {
     screen_conf_t conf = {0};
 
     conf.res_x = -1;
     conf.res_y = -1;
-    conf.alloc.malloc = heap_alloc_shared_ptr;
-    conf.alloc.free = heap_free_ptr;
+    conf.alloc.malloc = vid_alloc;
+    conf.alloc.free = vid_free;
     conf.colormode = GFX_COLOR_MODE_ARGB8888;
     conf.laynum = 1;
     conf.hwaccel = 0;

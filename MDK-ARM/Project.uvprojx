@@ -48,8 +48,8 @@
             <NotGenerated>0</NotGenerated>
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
-          <OutputDirectory>.\STM32H747I_DISCO_CM4\Exe\</OutputDirectory>
-          <OutputName>STM32H747I_DISCO_CM4</OutputName>
+          <OutputDirectory>.\obj-h7\cm4\</OutputDirectory>
+          <OutputName>Project</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>1</CreateHexFile>
@@ -80,9 +80,9 @@
             <nStopB2X>0</nStopB2X>
           </BeforeMake>
           <AfterMake>
-            <RunUserProg1>0</RunUserProg1>
+            <RunUserProg1>1</RunUserProg1>
             <RunUserProg2>0</RunUserProg2>
-            <UserProg1Name></UserProg1Name>
+            <UserProg1Name>fromelf obj-h7\cm4\%L --bin --output=obj-h7\cm4\bin\Project.bin</UserProg1Name>
             <UserProg2Name></UserProg2Name>
             <UserProg1Dos16Mode>0</UserProg1Dos16Mode>
             <UserProg2Dos16Mode>0</UserProg2Dos16Mode>
@@ -311,8 +311,8 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>4</Optim>
-            <oTime>0</oTime>
+            <Optim>1</Optim>
+            <oTime>1</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
             <Strict>0</Strict>
@@ -336,7 +336,7 @@
               <MiscControls></MiscControls>
               <Define>STM32H747xx,USE_HAL_DRIVER,USE_STM32H747I_DISCO,DATA_IN_ExtSDRAM,USE_LCD_HDMI,USE_USB_HS,STM32_SDK,BOOT,BSP_DRIVER,HAVE_CODESWAP,__ARCH_ARM_M4__,CORE_CM4</Define>
               <Undefine></Undefine>
-              <IncludePath>..\common\STM32H7xx_Driver\CMSIS\Include;../common/STM32H7xx_Driver/CMSIS/Device/ST/STM32H7xx/Include;../common/STM32H7xx_Driver/Inc;../common/STM32H7xx_Driver/BSP/STM32H747I-DISCO;../common/STM32H7xx_Driver/BSP/Components/Common;../common/Utilities/Fonts;../common/Utilities/CPU;../common/Middlewares/ST/STM32_Audio/Addons/PDM/Inc;..\ulib\pub;..\configs\stm32h745-disco</IncludePath>
+              <IncludePath>..\common\STM32H7xx_Driver\CMSIS\Include;../common/STM32H7xx_Driver/CMSIS/Device/ST/STM32H7xx/Include;../common/STM32H7xx_Driver/Inc;../common/STM32H7xx_Driver/BSP/STM32H747I-DISCO;../common/STM32H7xx_Driver/BSP/Components/Common;../common/Utilities/Fonts;../common/Utilities/CPU;../common/Middlewares/ST/STM32_Audio/Addons/PDM/Inc;..\ulib\pub;..\configs\stm32h745-disco;..\ulib\arch</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -1012,6 +1012,11 @@
               <FileType>2</FileType>
               <FilePath>..\ulib\arch\Arm\m7\src\machM7.s</FilePath>
             </File>
+            <File>
+              <FileName>cm4_code.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>..\ulib\arch\Arm\m7\src\cm4_code.s</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1486,6 +1491,74 @@
         </Group>
         <Group>
           <GroupName>hal-h7xx-src</GroupName>
+          <GroupOption>
+            <CommonProperty>
+              <UseCPPCompiler>0</UseCPPCompiler>
+              <RVCTCodeConst>0</RVCTCodeConst>
+              <RVCTZI>0</RVCTZI>
+              <RVCTOtherData>0</RVCTOtherData>
+              <ModuleSelection>0</ModuleSelection>
+              <IncludeInBuild>0</IncludeInBuild>
+              <AlwaysBuild>2</AlwaysBuild>
+              <GenerateAssemblyFile>2</GenerateAssemblyFile>
+              <AssembleAssemblyFile>2</AssembleAssemblyFile>
+              <PublicsOnly>2</PublicsOnly>
+              <StopOnExitCode>11</StopOnExitCode>
+              <CustomArgument></CustomArgument>
+              <IncludeLibraryModules></IncludeLibraryModules>
+              <ComprImg>1</ComprImg>
+            </CommonProperty>
+            <GroupArmAds>
+              <Cads>
+                <interw>2</interw>
+                <Optim>0</Optim>
+                <oTime>2</oTime>
+                <SplitLS>2</SplitLS>
+                <OneElfS>2</OneElfS>
+                <Strict>2</Strict>
+                <EnumInt>2</EnumInt>
+                <PlainCh>2</PlainCh>
+                <Ropi>2</Ropi>
+                <Rwpi>2</Rwpi>
+                <wLevel>0</wLevel>
+                <uThumb>2</uThumb>
+                <uSurpInc>2</uSurpInc>
+                <uC99>2</uC99>
+                <useXO>2</useXO>
+                <v6Lang>0</v6Lang>
+                <v6LangP>0</v6LangP>
+                <vShortEn>2</vShortEn>
+                <vShortWch>2</vShortWch>
+                <v6Lto>2</v6Lto>
+                <v6WtE>2</v6WtE>
+                <v6Rtti>2</v6Rtti>
+                <VariousControls>
+                  <MiscControls></MiscControls>
+                  <Define></Define>
+                  <Undefine></Undefine>
+                  <IncludePath></IncludePath>
+                </VariousControls>
+              </Cads>
+              <Aads>
+                <interw>2</interw>
+                <Ropi>2</Ropi>
+                <Rwpi>2</Rwpi>
+                <thumb>2</thumb>
+                <SplitLS>2</SplitLS>
+                <SwStkChk>2</SwStkChk>
+                <NoWarn>2</NoWarn>
+                <uSurpInc>2</uSurpInc>
+                <useXO>2</useXO>
+                <uClangAs>2</uClangAs>
+                <VariousControls>
+                  <MiscControls></MiscControls>
+                  <Define></Define>
+                  <Undefine></Undefine>
+                  <IncludePath></IncludePath>
+                </VariousControls>
+              </Aads>
+            </GroupArmAds>
+          </GroupOption>
           <Files>
             <File>
               <FileName>stm32h7xx_hal.c</FileName>
@@ -2936,6 +3009,11 @@
               <FileName>machM7.s</FileName>
               <FileType>2</FileType>
               <FilePath>..\ulib\arch\Arm\m7\src\machM7.s</FilePath>
+            </File>
+            <File>
+              <FileName>cm4_code.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>..\ulib\arch\Arm\m7\src\cm4_code.s</FilePath>
             </File>
           </Files>
         </Group>
@@ -4929,6 +5007,11 @@
               <FileName>machM7.s</FileName>
               <FileType>2</FileType>
               <FilePath>..\ulib\arch\Arm\m7\src\machM7.s</FilePath>
+            </File>
+            <File>
+              <FileName>cm4_code.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>..\ulib\arch\Arm\m7\src\cm4_code.s</FilePath>
             </File>
           </Files>
         </Group>
