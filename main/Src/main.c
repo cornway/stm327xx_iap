@@ -16,6 +16,7 @@
 #include <nvic.h>
 #include <audio_main.h>
 #include <gui.h>
+#include <smp.h>
 
 const char *snd_dir_path = "/sys/sound";
 

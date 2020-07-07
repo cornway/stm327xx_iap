@@ -89,7 +89,7 @@
             <nStopA1X>0</nStopA1X>
             <nStopA2X>0</nStopA2X>
           </AfterMake>
-          <SelectedForBatchBuild>0</SelectedForBatchBuild>
+          <SelectedForBatchBuild>1</SelectedForBatchBuild>
           <SVCSIdString></SVCSIdString>
         </TargetCommonOption>
         <CommonProperty>
@@ -134,11 +134,11 @@
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
             <Capability>1</Capability>
-            <DriverSelection>4101</DriverSelection>
+            <DriverSelection>4096</DriverSelection>
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\UL2CM3.DLL</Flash2>
-          <Flash3></Flash3>
+          <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -334,7 +334,7 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls></MiscControls>
-              <Define>STM32H747xx,USE_HAL_DRIVER,USE_STM32H747I_DISCO,DATA_IN_ExtSDRAM,USE_LCD_HDMI,USE_USB_HS,STM32_SDK,BOOT,BSP_DRIVER,HAVE_CODESWAP,__ARCH_ARM_M4__,CORE_CM4</Define>
+              <Define>STM32H747xx,USE_HAL_DRIVER,USE_STM32H747I_DISCO,STM32_SDK,__ARCH_ARM_M4__,CORE_CM4,BSP_INDIR_API,VECT_TAB_SRAM</Define>
               <Undefine></Undefine>
               <IncludePath>..\common\STM32H7xx_Driver\CMSIS\Include;../common/STM32H7xx_Driver/CMSIS/Device/ST/STM32H7xx/Include;../common/STM32H7xx_Driver/Inc;../common/STM32H7xx_Driver/BSP/STM32H747I-DISCO;../common/STM32H7xx_Driver/BSP/Components/Common;../common/Utilities/Fonts;../common/Utilities/CPU;../common/Middlewares/ST/STM32_Audio/Addons/PDM/Inc;..\ulib\pub;..\configs\stm32h745-disco;..\ulib\arch</IncludePath>
             </VariousControls>
@@ -606,6 +606,11 @@
               <FileType>5</FileType>
               <FilePath>..\common\int\it_export.h</FilePath>
             </File>
+            <File>
+              <FileName>smp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\hal\smp.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -855,56 +860,6 @@
               <FilePath>..\ulib\screen\screen_std.c</FilePath>
             </File>
             <File>
-              <FileName>usb_hid_gamepad.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\ulib\usb\stm32\usb_hid_gamepad.c</FilePath>
-            </File>
-            <File>
-              <FileName>usbh_conf.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\ulib\usb\stm32\usbh_conf.c</FilePath>
-            </File>
-            <File>
-              <FileName>usbh_core.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\ulib\usb\stm32\usbh_core.c</FilePath>
-            </File>
-            <File>
-              <FileName>usbh_ctlreq.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\ulib\usb\stm32\usbh_ctlreq.c</FilePath>
-            </File>
-            <File>
-              <FileName>usbh_hid.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\ulib\usb\stm32\usbh_hid.c</FilePath>
-            </File>
-            <File>
-              <FileName>usbh_hid_mouse.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\ulib\usb\stm32\usbh_hid_mouse.c</FilePath>
-            </File>
-            <File>
-              <FileName>usbh_hid_keybd.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\ulib\usb\stm32\usbh_hid_keybd.c</FilePath>
-            </File>
-            <File>
-              <FileName>usbh_hid_parser.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\ulib\usb\stm32\usbh_hid_parser.c</FilePath>
-            </File>
-            <File>
-              <FileName>usbh_ioreq.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\ulib\usb\stm32\usbh_ioreq.c</FilePath>
-            </File>
-            <File>
-              <FileName>usbh_pipes.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\ulib\usb\stm32\usbh_pipes.c</FilePath>
-            </File>
-            <File>
               <FileName>lcd.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\ulib\screen\stm32\lcd.c</FilePath>
@@ -920,14 +875,14 @@
               <FilePath>..\ulib\misc\src\swtim.cpp</FilePath>
             </File>
             <File>
-              <FileName>gpio.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\ulib\pub\gpio.h</FilePath>
-            </File>
-            <File>
               <FileName>new.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\ulib\misc\src\new.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>usb_hid_gamepad.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\usb_hid_gamepad.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1212,6 +1167,56 @@
               <FileName>stm32h747i_discovery.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\common\STM32H7xx_Driver\BSP\STM32H747I-DISCO\stm32h747i_discovery.c</FilePath>
+              <FileOption>
+                <CommonProperty>
+                  <UseCPPCompiler>2</UseCPPCompiler>
+                  <RVCTCodeConst>0</RVCTCodeConst>
+                  <RVCTZI>0</RVCTZI>
+                  <RVCTOtherData>0</RVCTOtherData>
+                  <ModuleSelection>0</ModuleSelection>
+                  <IncludeInBuild>1</IncludeInBuild>
+                  <AlwaysBuild>2</AlwaysBuild>
+                  <GenerateAssemblyFile>2</GenerateAssemblyFile>
+                  <AssembleAssemblyFile>2</AssembleAssemblyFile>
+                  <PublicsOnly>2</PublicsOnly>
+                  <StopOnExitCode>11</StopOnExitCode>
+                  <CustomArgument></CustomArgument>
+                  <IncludeLibraryModules></IncludeLibraryModules>
+                  <ComprImg>1</ComprImg>
+                </CommonProperty>
+                <FileArmAds>
+                  <Cads>
+                    <interw>2</interw>
+                    <Optim>0</Optim>
+                    <oTime>2</oTime>
+                    <SplitLS>2</SplitLS>
+                    <OneElfS>2</OneElfS>
+                    <Strict>2</Strict>
+                    <EnumInt>2</EnumInt>
+                    <PlainCh>2</PlainCh>
+                    <Ropi>2</Ropi>
+                    <Rwpi>2</Rwpi>
+                    <wLevel>0</wLevel>
+                    <uThumb>2</uThumb>
+                    <uSurpInc>2</uSurpInc>
+                    <uC99>2</uC99>
+                    <useXO>2</useXO>
+                    <v6Lang>0</v6Lang>
+                    <v6LangP>0</v6LangP>
+                    <vShortEn>2</vShortEn>
+                    <vShortWch>2</vShortWch>
+                    <v6Lto>2</v6Lto>
+                    <v6WtE>2</v6WtE>
+                    <v6Rtti>2</v6Rtti>
+                    <VariousControls>
+                      <MiscControls></MiscControls>
+                      <Define></Define>
+                      <Undefine></Undefine>
+                      <IncludePath></IncludePath>
+                    </VariousControls>
+                  </Cads>
+                </FileArmAds>
+              </FileOption>
             </File>
             <File>
               <FileName>stm32h747i_discovery_audio.c</FileName>
@@ -2157,6 +2162,287 @@
             </File>
           </Files>
         </Group>
+        <Group>
+          <GroupName>usb-h747</GroupName>
+          <GroupOption>
+            <CommonProperty>
+              <UseCPPCompiler>0</UseCPPCompiler>
+              <RVCTCodeConst>0</RVCTCodeConst>
+              <RVCTZI>0</RVCTZI>
+              <RVCTOtherData>0</RVCTOtherData>
+              <ModuleSelection>0</ModuleSelection>
+              <IncludeInBuild>0</IncludeInBuild>
+              <AlwaysBuild>2</AlwaysBuild>
+              <GenerateAssemblyFile>2</GenerateAssemblyFile>
+              <AssembleAssemblyFile>2</AssembleAssemblyFile>
+              <PublicsOnly>2</PublicsOnly>
+              <StopOnExitCode>11</StopOnExitCode>
+              <CustomArgument></CustomArgument>
+              <IncludeLibraryModules></IncludeLibraryModules>
+              <ComprImg>1</ComprImg>
+            </CommonProperty>
+            <GroupArmAds>
+              <Cads>
+                <interw>2</interw>
+                <Optim>0</Optim>
+                <oTime>2</oTime>
+                <SplitLS>2</SplitLS>
+                <OneElfS>2</OneElfS>
+                <Strict>2</Strict>
+                <EnumInt>2</EnumInt>
+                <PlainCh>2</PlainCh>
+                <Ropi>2</Ropi>
+                <Rwpi>2</Rwpi>
+                <wLevel>0</wLevel>
+                <uThumb>2</uThumb>
+                <uSurpInc>2</uSurpInc>
+                <uC99>2</uC99>
+                <useXO>2</useXO>
+                <v6Lang>0</v6Lang>
+                <v6LangP>0</v6LangP>
+                <vShortEn>2</vShortEn>
+                <vShortWch>2</vShortWch>
+                <v6Lto>2</v6Lto>
+                <v6WtE>2</v6WtE>
+                <v6Rtti>2</v6Rtti>
+                <VariousControls>
+                  <MiscControls></MiscControls>
+                  <Define></Define>
+                  <Undefine></Undefine>
+                  <IncludePath></IncludePath>
+                </VariousControls>
+              </Cads>
+              <Aads>
+                <interw>2</interw>
+                <Ropi>2</Ropi>
+                <Rwpi>2</Rwpi>
+                <thumb>2</thumb>
+                <SplitLS>2</SplitLS>
+                <SwStkChk>2</SwStkChk>
+                <NoWarn>2</NoWarn>
+                <uSurpInc>2</uSurpInc>
+                <useXO>2</useXO>
+                <uClangAs>2</uClangAs>
+                <VariousControls>
+                  <MiscControls></MiscControls>
+                  <Define></Define>
+                  <Undefine></Undefine>
+                  <IncludePath></IncludePath>
+                </VariousControls>
+              </Aads>
+            </GroupArmAds>
+          </GroupOption>
+          <Files>
+            <File>
+              <FileName>usbh_conf.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\h747\usbh_conf.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_core.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\h747\usbh_core.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_ctlreq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\h747\usbh_ctlreq.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_hid.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\h747\usbh_hid.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_hid_keybd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\h747\usbh_hid_keybd.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_hid_mouse.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\h747\usbh_hid_mouse.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_hid_parser.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\h747\usbh_hid_parser.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_ioreq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\h747\usbh_ioreq.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_pipes.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\h747\usbh_pipes.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>usb-f769</GroupName>
+          <GroupOption>
+            <CommonProperty>
+              <UseCPPCompiler>0</UseCPPCompiler>
+              <RVCTCodeConst>0</RVCTCodeConst>
+              <RVCTZI>0</RVCTZI>
+              <RVCTOtherData>0</RVCTOtherData>
+              <ModuleSelection>0</ModuleSelection>
+              <IncludeInBuild>0</IncludeInBuild>
+              <AlwaysBuild>2</AlwaysBuild>
+              <GenerateAssemblyFile>2</GenerateAssemblyFile>
+              <AssembleAssemblyFile>2</AssembleAssemblyFile>
+              <PublicsOnly>2</PublicsOnly>
+              <StopOnExitCode>11</StopOnExitCode>
+              <CustomArgument></CustomArgument>
+              <IncludeLibraryModules></IncludeLibraryModules>
+              <ComprImg>1</ComprImg>
+            </CommonProperty>
+            <GroupArmAds>
+              <Cads>
+                <interw>2</interw>
+                <Optim>0</Optim>
+                <oTime>2</oTime>
+                <SplitLS>2</SplitLS>
+                <OneElfS>2</OneElfS>
+                <Strict>2</Strict>
+                <EnumInt>2</EnumInt>
+                <PlainCh>2</PlainCh>
+                <Ropi>2</Ropi>
+                <Rwpi>2</Rwpi>
+                <wLevel>0</wLevel>
+                <uThumb>2</uThumb>
+                <uSurpInc>2</uSurpInc>
+                <uC99>2</uC99>
+                <useXO>2</useXO>
+                <v6Lang>0</v6Lang>
+                <v6LangP>0</v6LangP>
+                <vShortEn>2</vShortEn>
+                <vShortWch>2</vShortWch>
+                <v6Lto>2</v6Lto>
+                <v6WtE>2</v6WtE>
+                <v6Rtti>2</v6Rtti>
+                <VariousControls>
+                  <MiscControls></MiscControls>
+                  <Define></Define>
+                  <Undefine></Undefine>
+                  <IncludePath></IncludePath>
+                </VariousControls>
+              </Cads>
+              <Aads>
+                <interw>2</interw>
+                <Ropi>2</Ropi>
+                <Rwpi>2</Rwpi>
+                <thumb>2</thumb>
+                <SplitLS>2</SplitLS>
+                <SwStkChk>2</SwStkChk>
+                <NoWarn>2</NoWarn>
+                <uSurpInc>2</uSurpInc>
+                <useXO>2</useXO>
+                <uClangAs>2</uClangAs>
+                <VariousControls>
+                  <MiscControls></MiscControls>
+                  <Define></Define>
+                  <Undefine></Undefine>
+                  <IncludePath></IncludePath>
+                </VariousControls>
+              </Aads>
+            </GroupArmAds>
+          </GroupOption>
+          <Files>
+            <File>
+              <FileName>usb_hid_gamepad.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\f769\usb_hid_gamepad.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_conf.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\f769\usbh_conf.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_core.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\f769\usbh_core.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_ctlreq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\f769\usbh_ctlreq.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_hid.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\f769\usbh_hid.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_hid_keybd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\f769\usbh_hid_keybd.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_hid_mouse.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\f769\usbh_hid_mouse.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_hid_parser.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\f769\usbh_hid_parser.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_ioreq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\f769\usbh_ioreq.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_pipes.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\f769\usbh_pipes.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>ulib-h7-m4</GroupName>
+          <Files>
+            <File>
+              <FileName>gfx2d_mem.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\gfx\gfx2d_mem.c</FilePath>
+            </File>
+            <File>
+              <FileName>smp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\hal\smp.c</FilePath>
+            </File>
+            <File>
+              <FileName>dstring.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\lib\dstring.c</FilePath>
+            </File>
+            <File>
+              <FileName>codeswap.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\hal\codeswap.c</FilePath>
+            </File>
+            <File>
+              <FileName>dmalloc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\lib\dmalloc.c</FilePath>
+            </File>
+            <File>
+              <FileName>dmisc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\lib\dmisc.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_api.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\pub\bsp_api.c</FilePath>
+            </File>
+          </Files>
+        </Group>
       </Groups>
     </Target>
     <Target>
@@ -2242,7 +2528,7 @@
             <nStopA1X>0</nStopA1X>
             <nStopA2X>0</nStopA2X>
           </AfterMake>
-          <SelectedForBatchBuild>0</SelectedForBatchBuild>
+          <SelectedForBatchBuild>1</SelectedForBatchBuild>
           <SVCSIdString></SVCSIdString>
         </TargetCommonOption>
         <CommonProperty>
@@ -2740,6 +3026,11 @@
               <FileType>5</FileType>
               <FilePath>..\common\int\it_export.h</FilePath>
             </File>
+            <File>
+              <FileName>smp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\hal\smp.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2921,56 +3212,6 @@
               <FilePath>..\ulib\screen\screen_std.c</FilePath>
             </File>
             <File>
-              <FileName>usb_hid_gamepad.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\ulib\usb\stm32\usb_hid_gamepad.c</FilePath>
-            </File>
-            <File>
-              <FileName>usbh_conf.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\ulib\usb\stm32\usbh_conf.c</FilePath>
-            </File>
-            <File>
-              <FileName>usbh_core.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\ulib\usb\stm32\usbh_core.c</FilePath>
-            </File>
-            <File>
-              <FileName>usbh_ctlreq.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\ulib\usb\stm32\usbh_ctlreq.c</FilePath>
-            </File>
-            <File>
-              <FileName>usbh_hid.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\ulib\usb\stm32\usbh_hid.c</FilePath>
-            </File>
-            <File>
-              <FileName>usbh_hid_mouse.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\ulib\usb\stm32\usbh_hid_mouse.c</FilePath>
-            </File>
-            <File>
-              <FileName>usbh_hid_keybd.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\ulib\usb\stm32\usbh_hid_keybd.c</FilePath>
-            </File>
-            <File>
-              <FileName>usbh_hid_parser.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\ulib\usb\stm32\usbh_hid_parser.c</FilePath>
-            </File>
-            <File>
-              <FileName>usbh_ioreq.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\ulib\usb\stm32\usbh_ioreq.c</FilePath>
-            </File>
-            <File>
-              <FileName>usbh_pipes.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\ulib\usb\stm32\usbh_pipes.c</FilePath>
-            </File>
-            <File>
               <FileName>lcd.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\ulib\screen\stm32\lcd.c</FilePath>
@@ -2986,14 +3227,14 @@
               <FilePath>..\ulib\misc\src\swtim.cpp</FilePath>
             </File>
             <File>
-              <FileName>gpio.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\ulib\pub\gpio.h</FilePath>
-            </File>
-            <File>
               <FileName>new.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\ulib\misc\src\new.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>usb_hid_gamepad.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\usb_hid_gamepad.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3880,6 +4121,287 @@
               <FileName>stm32h7xx_ll_utils.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\common\STM32H7xx_Driver\Src\stm32h7xx_ll_utils.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>usb-h747</GroupName>
+          <Files>
+            <File>
+              <FileName>usbh_conf.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\h747\usbh_conf.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_core.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\h747\usbh_core.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_ctlreq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\h747\usbh_ctlreq.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_hid.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\h747\usbh_hid.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_hid_keybd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\h747\usbh_hid_keybd.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_hid_mouse.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\h747\usbh_hid_mouse.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_hid_parser.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\h747\usbh_hid_parser.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_ioreq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\h747\usbh_ioreq.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_pipes.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\h747\usbh_pipes.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>usb-f769</GroupName>
+          <GroupOption>
+            <CommonProperty>
+              <UseCPPCompiler>0</UseCPPCompiler>
+              <RVCTCodeConst>0</RVCTCodeConst>
+              <RVCTZI>0</RVCTZI>
+              <RVCTOtherData>0</RVCTOtherData>
+              <ModuleSelection>0</ModuleSelection>
+              <IncludeInBuild>0</IncludeInBuild>
+              <AlwaysBuild>2</AlwaysBuild>
+              <GenerateAssemblyFile>2</GenerateAssemblyFile>
+              <AssembleAssemblyFile>2</AssembleAssemblyFile>
+              <PublicsOnly>2</PublicsOnly>
+              <StopOnExitCode>11</StopOnExitCode>
+              <CustomArgument></CustomArgument>
+              <IncludeLibraryModules></IncludeLibraryModules>
+              <ComprImg>1</ComprImg>
+            </CommonProperty>
+            <GroupArmAds>
+              <Cads>
+                <interw>2</interw>
+                <Optim>0</Optim>
+                <oTime>2</oTime>
+                <SplitLS>2</SplitLS>
+                <OneElfS>2</OneElfS>
+                <Strict>2</Strict>
+                <EnumInt>2</EnumInt>
+                <PlainCh>2</PlainCh>
+                <Ropi>2</Ropi>
+                <Rwpi>2</Rwpi>
+                <wLevel>0</wLevel>
+                <uThumb>2</uThumb>
+                <uSurpInc>2</uSurpInc>
+                <uC99>2</uC99>
+                <useXO>2</useXO>
+                <v6Lang>0</v6Lang>
+                <v6LangP>0</v6LangP>
+                <vShortEn>2</vShortEn>
+                <vShortWch>2</vShortWch>
+                <v6Lto>2</v6Lto>
+                <v6WtE>2</v6WtE>
+                <v6Rtti>2</v6Rtti>
+                <VariousControls>
+                  <MiscControls></MiscControls>
+                  <Define></Define>
+                  <Undefine></Undefine>
+                  <IncludePath></IncludePath>
+                </VariousControls>
+              </Cads>
+              <Aads>
+                <interw>2</interw>
+                <Ropi>2</Ropi>
+                <Rwpi>2</Rwpi>
+                <thumb>2</thumb>
+                <SplitLS>2</SplitLS>
+                <SwStkChk>2</SwStkChk>
+                <NoWarn>2</NoWarn>
+                <uSurpInc>2</uSurpInc>
+                <useXO>2</useXO>
+                <uClangAs>2</uClangAs>
+                <VariousControls>
+                  <MiscControls></MiscControls>
+                  <Define></Define>
+                  <Undefine></Undefine>
+                  <IncludePath></IncludePath>
+                </VariousControls>
+              </Aads>
+            </GroupArmAds>
+          </GroupOption>
+          <Files>
+            <File>
+              <FileName>usb_hid_gamepad.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\f769\usb_hid_gamepad.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_conf.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\f769\usbh_conf.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_core.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\f769\usbh_core.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_ctlreq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\f769\usbh_ctlreq.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_hid.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\f769\usbh_hid.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_hid_keybd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\f769\usbh_hid_keybd.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_hid_mouse.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\f769\usbh_hid_mouse.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_hid_parser.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\f769\usbh_hid_parser.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_ioreq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\f769\usbh_ioreq.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_pipes.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\f769\usbh_pipes.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>ulib-h7-m4</GroupName>
+          <GroupOption>
+            <CommonProperty>
+              <UseCPPCompiler>0</UseCPPCompiler>
+              <RVCTCodeConst>0</RVCTCodeConst>
+              <RVCTZI>0</RVCTZI>
+              <RVCTOtherData>0</RVCTOtherData>
+              <ModuleSelection>0</ModuleSelection>
+              <IncludeInBuild>0</IncludeInBuild>
+              <AlwaysBuild>2</AlwaysBuild>
+              <GenerateAssemblyFile>2</GenerateAssemblyFile>
+              <AssembleAssemblyFile>2</AssembleAssemblyFile>
+              <PublicsOnly>2</PublicsOnly>
+              <StopOnExitCode>11</StopOnExitCode>
+              <CustomArgument></CustomArgument>
+              <IncludeLibraryModules></IncludeLibraryModules>
+              <ComprImg>1</ComprImg>
+            </CommonProperty>
+            <GroupArmAds>
+              <Cads>
+                <interw>2</interw>
+                <Optim>0</Optim>
+                <oTime>2</oTime>
+                <SplitLS>2</SplitLS>
+                <OneElfS>2</OneElfS>
+                <Strict>2</Strict>
+                <EnumInt>2</EnumInt>
+                <PlainCh>2</PlainCh>
+                <Ropi>2</Ropi>
+                <Rwpi>2</Rwpi>
+                <wLevel>0</wLevel>
+                <uThumb>2</uThumb>
+                <uSurpInc>2</uSurpInc>
+                <uC99>2</uC99>
+                <useXO>2</useXO>
+                <v6Lang>0</v6Lang>
+                <v6LangP>0</v6LangP>
+                <vShortEn>2</vShortEn>
+                <vShortWch>2</vShortWch>
+                <v6Lto>2</v6Lto>
+                <v6WtE>2</v6WtE>
+                <v6Rtti>2</v6Rtti>
+                <VariousControls>
+                  <MiscControls></MiscControls>
+                  <Define></Define>
+                  <Undefine></Undefine>
+                  <IncludePath></IncludePath>
+                </VariousControls>
+              </Cads>
+              <Aads>
+                <interw>2</interw>
+                <Ropi>2</Ropi>
+                <Rwpi>2</Rwpi>
+                <thumb>2</thumb>
+                <SplitLS>2</SplitLS>
+                <SwStkChk>2</SwStkChk>
+                <NoWarn>2</NoWarn>
+                <uSurpInc>2</uSurpInc>
+                <useXO>2</useXO>
+                <uClangAs>2</uClangAs>
+                <VariousControls>
+                  <MiscControls></MiscControls>
+                  <Define></Define>
+                  <Undefine></Undefine>
+                  <IncludePath></IncludePath>
+                </VariousControls>
+              </Aads>
+            </GroupArmAds>
+          </GroupOption>
+          <Files>
+            <File>
+              <FileName>gfx2d_mem.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\gfx\gfx2d_mem.c</FilePath>
+            </File>
+            <File>
+              <FileName>smp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\hal\smp.c</FilePath>
+            </File>
+            <File>
+              <FileName>dstring.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\lib\dstring.c</FilePath>
+            </File>
+            <File>
+              <FileName>codeswap.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\hal\codeswap.c</FilePath>
+            </File>
+            <File>
+              <FileName>dmalloc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\lib\dmalloc.c</FilePath>
+            </File>
+            <File>
+              <FileName>dmisc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\lib\dmisc.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_api.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\pub\bsp_api.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -4602,6 +5124,11 @@
               <FileType>5</FileType>
               <FilePath>..\common\int\it_export.h</FilePath>
             </File>
+            <File>
+              <FileName>smp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\hal\smp.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -4851,56 +5378,6 @@
               <FilePath>..\ulib\screen\screen_std.c</FilePath>
             </File>
             <File>
-              <FileName>usb_hid_gamepad.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\ulib\usb\stm32\usb_hid_gamepad.c</FilePath>
-            </File>
-            <File>
-              <FileName>usbh_conf.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\ulib\usb\stm32\usbh_conf.c</FilePath>
-            </File>
-            <File>
-              <FileName>usbh_core.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\ulib\usb\stm32\usbh_core.c</FilePath>
-            </File>
-            <File>
-              <FileName>usbh_ctlreq.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\ulib\usb\stm32\usbh_ctlreq.c</FilePath>
-            </File>
-            <File>
-              <FileName>usbh_hid.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\ulib\usb\stm32\usbh_hid.c</FilePath>
-            </File>
-            <File>
-              <FileName>usbh_hid_mouse.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\ulib\usb\stm32\usbh_hid_mouse.c</FilePath>
-            </File>
-            <File>
-              <FileName>usbh_hid_keybd.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\ulib\usb\stm32\usbh_hid_keybd.c</FilePath>
-            </File>
-            <File>
-              <FileName>usbh_hid_parser.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\ulib\usb\stm32\usbh_hid_parser.c</FilePath>
-            </File>
-            <File>
-              <FileName>usbh_ioreq.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\ulib\usb\stm32\usbh_ioreq.c</FilePath>
-            </File>
-            <File>
-              <FileName>usbh_pipes.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\ulib\usb\stm32\usbh_pipes.c</FilePath>
-            </File>
-            <File>
               <FileName>lcd.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\ulib\screen\stm32\lcd.c</FilePath>
@@ -4916,14 +5393,14 @@
               <FilePath>..\ulib\misc\src\swtim.cpp</FilePath>
             </File>
             <File>
-              <FileName>gpio.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\ulib\pub\gpio.h</FilePath>
-            </File>
-            <File>
               <FileName>new.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\ulib\misc\src\new.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>usb_hid_gamepad.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\usb_hid_gamepad.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -6150,6 +6627,151 @@
               <FileName>stm32h7xx_ll_utils.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\common\STM32H7xx_Driver\Src\stm32h7xx_ll_utils.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>usb-h747</GroupName>
+          <Files>
+            <File>
+              <FileName>usbh_conf.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\h747\usbh_conf.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_core.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\h747\usbh_core.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_ctlreq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\h747\usbh_ctlreq.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_hid.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\h747\usbh_hid.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_hid_keybd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\h747\usbh_hid_keybd.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_hid_mouse.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\h747\usbh_hid_mouse.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_hid_parser.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\h747\usbh_hid_parser.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_ioreq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\h747\usbh_ioreq.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_pipes.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\h747\usbh_pipes.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>usb-f769</GroupName>
+          <Files>
+            <File>
+              <FileName>usb_hid_gamepad.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\f769\usb_hid_gamepad.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_conf.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\f769\usbh_conf.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_core.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\f769\usbh_core.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_ctlreq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\f769\usbh_ctlreq.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_hid.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\f769\usbh_hid.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_hid_keybd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\f769\usbh_hid_keybd.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_hid_mouse.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\f769\usbh_hid_mouse.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_hid_parser.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\f769\usbh_hid_parser.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_ioreq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\f769\usbh_ioreq.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_pipes.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\usb\stm32\f769\usbh_pipes.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>ulib-h7-m4</GroupName>
+          <Files>
+            <File>
+              <FileName>gfx2d_mem.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\gfx\gfx2d_mem.c</FilePath>
+            </File>
+            <File>
+              <FileName>smp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\hal\smp.c</FilePath>
+            </File>
+            <File>
+              <FileName>dstring.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\lib\dstring.c</FilePath>
+            </File>
+            <File>
+              <FileName>codeswap.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\hal\codeswap.c</FilePath>
+            </File>
+            <File>
+              <FileName>dmalloc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\lib\dmalloc.c</FilePath>
+            </File>
+            <File>
+              <FileName>dmisc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\lib\dmisc.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_api.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ulib\pub\bsp_api.c</FilePath>
             </File>
           </Files>
         </Group>
