@@ -587,11 +587,6 @@
               <FilePath>..\common\hal\sd_diskio.c</FilePath>
             </File>
             <File>
-              <FileName>spi_int.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\common\hal\spi_int.c</FilePath>
-            </File>
-            <File>
               <FileName>tim.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\common\hal\tim.c</FilePath>
@@ -3007,11 +3002,6 @@
               <FilePath>..\common\hal\sd_diskio.c</FilePath>
             </File>
             <File>
-              <FileName>spi_int.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\common\hal\spi_int.c</FilePath>
-            </File>
-            <File>
               <FileName>tim.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\common\hal\tim.c</FilePath>
@@ -5103,11 +5093,6 @@
               <FileName>sd_diskio.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\common\hal\sd_diskio.c</FilePath>
-            </File>
-            <File>
-              <FileName>spi_int.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\common\hal\spi_int.c</FilePath>
             </File>
             <File>
               <FileName>tim.c</FileName>
