@@ -30,7 +30,7 @@ int main(void)
 
 void *vid_alloc (uint32_t size)
 {
-    return heap_alloc_shared(size);
+    return heap_alloc_shared_align(size, size);
 }
 
 void vid_free (void *p)
@@ -49,10 +49,9 @@ void VID_PreConfig (void)
     conf.colormode = GFX_COLOR_MODE_ARGB8888;
     conf.laynum = 1;
     conf.hwaccel = 0;
-    conf.cachealgo = VID_CACHE_WBNWA;
+    conf.cachealgo = VID_CACHE_WTWA;
     conf.clockpresc = 2;
     vid_config(&conf);
-    vid_set_keying(COLOR_GREEN, 1);
 }
 
 int mainloop (int argc, const char *argv[])
